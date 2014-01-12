@@ -1,8 +1,12 @@
+2014-01-11
+Moved project from tar-balls to github. Applied simple patches to fix compiler flag errors and warning flag halting.
 
-October 15, 2007
+Successfully built and tested on Kubuntu 12.04, Ubuntu 13.04, Kubuntu 13.10, Fedora 18, Fedora 19.
+
+2007-10-15
 Version 0.2.1 with btnx v.0.3.2 includes revoco. This allows MX Revolution
 users to modify the behavior of their mouse wheel and the ability to use
 the wheel-press as a button.
 
-August 11, 2007
+2007-08-11
 Version 0.2.0, the first stable release, is finally ready.
