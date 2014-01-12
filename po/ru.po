@@ -1,0 +1,1234 @@
+# Russian translation for btnx-config
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the btnx-config package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: btnx-config\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2007-12-09 13:08+0200\n"
+"PO-Revision-Date: 2008-03-21 17:45+0000\n"
+"Last-Translator: Anton Shestakov <Unknown>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-04-03 14:40+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. TRANSLATORS: This is a dialog title. It informs the user they did
+#. * something wrong, followed by a specific description.
+#: btnd.c:330
+msgid "Invalid operation"
+msgstr "Неверная операция"
+
+#: btnd.c:331
+msgid "You must specify a button name to add it."
+msgstr "Укажите название кнопки для добавления."
+
+#. TRANSLATORS: This is a dialog title. The user tried to add a button
+#. * with a name that has already been used.
+#: btnd.c:340
+msgid "Button name already exists"
+msgstr "Выбранное название кнопки уже существует"
+
+#: btnd.c:341
+msgid "You must specify a different button name."
+msgstr "Укажите другое название кнопки."
+
+#. TRANSLATORS: This is a dialog title. It asks the user whether they
+#. * want to save the current configuration to a file. (This is a specific
+#. * file, it's name cannot be specified by the user)
+#: callbacks_config.c:88
+msgid "Save configuration to file?"
+msgstr "Сохранить конфигурацию в файл?"
+
+#: callbacks_config.c:172 callbacks_config.c:178
+msgid "Error: invalid configuration name"
+msgstr "Ошибка: неверное имя конфигурации"
+
+#: callbacks_config.c:173
+msgid "The configuration name you chose contains invalid characters."
+msgstr "Указанное вами имя конфигурации содержит недопустимые символы."
+
+#: callbacks_config.c:179
+msgid "The configuration name you chose cannot be used."
+msgstr "Указанное вами имя конфигурации не может быть использовано."
+
+#: callbacks_config.c:184
+msgid "Error: configuration name exists"
+msgstr "Ошибка: имя конфигурации уже существует"
+
+#: callbacks_config.c:185
+msgid ""
+"The configuration name is already used by another configuration. Choose "
+"another name"
+msgstr "Данное имя уже используется другой конфигурацией. Укажите другое"
+
+#. TRANSLATORS: This is a dialog title. It asks whether the user wants to
+#. * delete all the configuration data of the program (this change is not
+#. * permanent unless the user saves the cleared configuration)
+#: callbacks_config.c:288
+msgid "Are you sure you want to clear all configuration values?"
+msgstr "Вы уверены, что хотите очистить все пункты конфигурации?"
+
+#: callbacks_config.c:289
+msgid ""
+"These changes are not permanent until you save the configuration file."
+msgstr "Изменения не будут применены до момента сохранения конфигурации."
+
+#: callbacks_config.c:421
+msgid "Copy configuration?"
+msgstr "Скопировать конфигурацию?"
+
+#: callbacks_config.c:422
+msgid ""
+"Pressing yes will copy your currently open configuration values into the new "
+"one."
+msgstr "Нажатие кнопки «Да» скопирует значения текущей конфигурации в новую."
+
+#: callbacks_config.c:441
+msgid "Delete configuration?"
+msgstr "Удалить конфигурацию?"
+
+#: callbacks_config.c:442
+msgid "Pressing yes will delete the selected configuration and its file."
+msgstr "Нажатие кнопки «Да» удалит выбранную конфигурацию и её файл."
+
+#: callbacks_config.c:499
+msgid "Could not create a version stamp file."
+msgstr "Не удалось создать файл штампа версии."
+
+#: callbacks_config.c:504 callbacks_config.c:551
+msgid "Unspecified tar execution failure."
+msgstr "Неизвестная ошибка при выполнении команды tar."
+
+#: callbacks_config.c:540
+msgid "Possibly broken or invalid backup file."
+msgstr ""
+"Возможно, резервная копии файла повреждена или имеет неверный формат."
+
+#: callbacks_config.c:545
+msgid ""
+"The backup configuration is from an incompatible version of btnx. Restore "
+"operation cancelled."
+msgstr ""
+"Эта резервная копия конфигурационного файла была создана при помощи другой "
+"версии btnx и не поддерживается. Операция восстановления отменена."
+
+#. TRANSLATORS: the "delay" refers to an interval of time that
+#. * must pass before something else happens. The whole number refers
+#. * to an integer, meaning a number that does not have decimal
+#. * places. For example, 1.5 or 99,90 are invalid values
+#: config.c:268
+msgid "Delay must be a whole number"
+msgstr "Величина задержки должна быть целым числом"
+
+#. TRANSLATORS: this informs the user that they tried to set the
+#. * value of UID to something other than a number. The UID refers
+#. * to User Identification, a number referring to a user in a
+#. * Linux system. Do not try to translate UID unless it is explicitly
+#. * used differently by Linux in your language.
+#: config.c:286
+msgid "UID must be a number"
+msgstr "В качестве UID следует указать число"
+
+#. TRANSLATORS: keycode refers to the name of a button (keyboard
+#. * or mouse button) that is used internally by the Linux kernel.
+#. * Examples: KEY_PAGEUP refers to the "Page Up" key on a keyboard.
+#. * BTN_LEFT refers to the left mouse button. Make sure this is
+#. * translated exactly the same as other references to "keycode" in
+#. * this program.
+#: config.c:324
+msgid "No keycode by that name exists."
+msgstr "Кода клавиши с таким именем не существует"
+
+#: config.c:572
+msgid "Configuration file save error"
+msgstr "Ошибка сохранения файла конфигурации"
+
+#: config.c:573
+msgid "An error occurred during saving the configuration."
+msgstr "Произошла ошибка во время сохранения конфигурационного файла"
+
+#. TRANSLATORS: "Clicks" refers to a number of presses that a user has
+#. * performed on a mouse button. This should be short. Abbreviate if
+#. * necessary. It is a table column title.
+#: dialog_btnd.c:58
+msgid "Clicks"
+msgstr "Щелчки"
+
+#. TRANSLATORS: "This should be short. Abbreviate if
+#. * necessary. It is a table column title. A fuller title in English would
+#. * be something along the lines of: "Has this button already been assigned
+#. * (or associated) with a certain signal?"
+#: dialog_btnd.c:70
+msgid "Already assigned?"
+msgstr "Уже назначено?"
+
+#: dialog_btnd.c:190
+#, c-format
+msgid ""
+"That rawcode has already been assigned to the button \"%s\". Try another one."
+msgstr "Этот код уже назначен кнопке «%s». Выберите другой."
+
+#: dialog_btnd.c:193
+msgid "Invalid choice"
+msgstr "Неверный выбор"
+
+#: help.c:39
+msgid "Help support not compiled."
+msgstr "Поддержка справки не скомпилирована."
+
+#: help.c:40
+msgid ""
+"Local help is unavailable. This program was not compiled with help support. "
+"Online help documentation is available at "
+"<http://www.ollisalonen.com/btnx/man>. Either compile this program with help "
+"support or contact the maintaner of this package."
+msgstr ""
+"Локальная справка не доступна. Программа была скомпилирована без её "
+"поддержки. Онлайн-версия доступна по адресу "
+"<http://www.ollisalonen.com/btnx/man>. Обратитесь к поставщику пакета или "
+"скомпилируйте программу самостоятельно с поддержкой справки."
+
+#: text.h:22
+msgid "Error"
+msgstr "Ошибка"
+
+#: text.h:23
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: text.h:24
+msgid "Yes"
+msgstr "Да"
+
+#: text.h:25
+msgid "No"
+msgstr "Нет"
+
+#: text.h:26
+msgid "Detected devices:"
+msgstr "Обнаруженные устройства:"
+
+#: text.h:27
+msgid "Detected buttons:"
+msgstr "Обнаруженные кнопки:"
+
+#. TRANSLATORS: this text shows the user the number of input device handlers
+#. * that have been detected by the program. A handler is a file (for
+#. * example, /dev/input/event1) that can be read. The information read from
+#. * that file is data coming from an input device (mouse, keyboard, etc.).
+#: text.h:32
+#, c-format
+msgid "Detected handlers: %d"
+msgstr "Обнаруженные обработчики: %d"
+
+#. TRANSLATORS: Vendor ID is an identification number that a device has. Every
+#. * manufacturer has their own "Vendor ID" that they can use for their devices
+#: text.h:35
+msgid "Vendor ID:"
+msgstr "ID производителя:"
+
+#. TRANSLATORS: Product ID is an identification number that a device has.
+#. * Manufacturers can designate unique Product IDs for different products.
+#: text.h:38
+msgid "Product ID:"
+msgstr "ID устройства:"
+
+#: text.h:39
+msgid "<b>Instructions</b>"
+msgstr "<b>Инструкция</b>"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. It refers to a mouse
+#. * button. A number is appended to it (ex. Button1, Button2...).
+#: text.h:42
+msgid "Button"
+msgstr "Кнопка"
+
+#. TRANSLATORS: this is a status text. It informs the user that the program is
+#. * in a detection state.
+#: text.h:45
+msgid "Detecting..."
+msgstr "Обнаружение..."
+
+#. TRANSLATORS: Button refers to a mouse button
+#: text.h:47
+msgid "Button already detected. Try another one."
+msgstr "Кнопка уже обнаружена. Попробуйте другую."
+
+#. TRANSLATORS: Button refers to a mouse button, and it has successfully been
+#. * detected.
+#: text.h:50
+msgid "Button detected!"
+msgstr "Кнопка обнаружена!"
+
+#. TRANSLATORS: this is the label of a button which starts the detection
+#. * process when pressed. Try to keep it short.
+#: text.h:53
+msgid "Press to start button detection"
+msgstr "Обнаружить кнопку"
+
+#. TRANSLATORS: this is the label of a button which stops the detection
+#. * process when pressed. Try to keep it short.
+#: text.h:56
+msgid "Press to stop button detection"
+msgstr "Остановить обнаружение"
+
+#. TRANSLATORS: this is the label of a button which starts the detection
+#. * process when pressed. Try to keep it short.
+#: text.h:59
+msgid "Press to start mouse detection"
+msgstr "Обнаружить мышь"
+
+#. TRANSLATORS: this is the label of a button which stops the detection
+#. * process when pressed. Try to keep it short.
+#: text.h:62
+msgid "Press to stop mouse detection"
+msgstr "Остановить обнаружение"
+
+#. TRANSLATORS: this is a status text, informing the user that the program is
+#. * waiting for the user to start the detection process
+#: text.h:65
+msgid "waiting for the start of detection"
+msgstr "ожидание начала обнаружения"
+
+#. TRANSLATORS: a modifier key is a keyboard key that can be combined with
+#. * other buttons. Examples: Ctrl, Shift, Alt.
+#: text.h:68
+msgid "Modifier key"
+msgstr "Модификатор"
+
+#: text.h:69
+msgid "Help documentation"
+msgstr "Документация"
+
+#: text.h:70
+msgid "Cancel the detection process"
+msgstr "Отменить процесс обнаружения"
+
+#. TRANSLATORS: this text informs the user that they tried to input some value
+#. * that is incorrect. Example: using letters in a number
+#: text.h:73
+msgid "Invalid value"
+msgstr "Недопустимое значение"
+
+#. TRANSLATORS: this is the title of a table column. Keep it short. Abbreviate
+#. * if necessary. The user doesn't necessarily need to understand what "rawcode"
+#. * means. It is a 32-bit integer value in hexadecimal form, intercepted from an
+#. * input stream. It is called "raw" because it has not been modified to make
+#. * it more readable or understandable.
+#: text.h:79
+msgid "Rawcode"
+msgstr "Код"
+
+#. TRANSLATORS: this refers to a combination of keyboard keys. Example:
+#. * Ctrl+Alt+B. It is an option chosen by the user, meaning that the program
+#. * will send that type of an event. Try to keep it short (under 30 characters)
+#. *
+#: text.h:84
+msgid "Key combination"
+msgstr "Комбинация клавиш"
+
+#: text.h:86
+msgid "Configuration switch"
+msgstr "Переключение конфигурации"
+
+#. TRANSLATORS: this refers to the execution of a shell command. Example:
+#. * "nano /etc/X11/xorg.conf".
+#. * It is an option chosen by the user, meaning that the program
+#. * will send that type of an event. Try to keep it short (under 30 characters)
+#. *
+#: text.h:92
+msgid "Command execution"
+msgstr "Выполнение команды"
+
+#. TRANSLATORS: this refers to an action that causes the next program
+#. * configuration to be loaded.
+#: text.h:95 widgets.c:144
+msgid "Next config."
+msgstr "Следующая конфигурация."
+
+#. TRANSLATORS: this refers to an action that causes the previous program
+#. * configuration to be loaded.
+#: text.h:98 widgets.c:145
+msgid "Previous config."
+msgstr "Предыдущая конфигурация."
+
+#. TRANSLATORS: this refers to an action that causes a specific configuration
+#. * to be loaded. It "switches" to another configuration
+#: text.h:101
+msgid "Switch to"
+msgstr "Переключиться на"
+
+#. TRANSLATORS: this is a label of a tab. Try to keep it short.
+#: text.h:103
+msgid "Buttons"
+msgstr "Кнопки"
+
+#. TRANSLATORS: refers to advanced settings, something a novice user should
+#. * not change
+#: text.h:106
+msgid "Advanced"
+msgstr "Расширенные настройки"
+
+#: text.h:107
+msgid "Configurations"
+msgstr "Конфигурации"
+
+#. TRANSLATORS: do not translate btnx. It is the name of a program.
+#: text.h:109
+msgid "Restart btnx"
+msgstr "Перезапустить btnx"
+
+#. TRANSLATORS: this refers to a setting a user can set, which forces
+#. * the program to send a mouse or keyboard button release signal right after
+#. * a pressed signal is sent. This means the button cannot be held down.
+#: text.h:113
+msgid "Force immediate button release"
+msgstr "Включить немедленное отпускание кнопки"
+
+#. TRANSLATORS: this is a label, try to keep it short. revoco refers to a
+#. * program, do not translate it.
+#: text.h:117
+msgid "<b>revoco settings</b>"
+msgstr "<b>Настройки revoco</b>"
+
+#. TRANSLATORS: do not translate revoco. It is the name of a program. The
+#. * text refers to enabling the functionality offered by this program.
+#: text.h:120
+msgid "Enable revoco"
+msgstr "Включить revoco"
+
+#. TRANSLATORS: free-scroll mode refers to MX Revolution mouse's wheel mode,
+#. * when it scrolls without friction.
+#: text.h:123
+msgid "Free-scroll mode"
+msgstr "Режим свободной прокрутки"
+
+#. TRANSLATORS: click-to-click mode refers to MX Revolution mouse's wheel mode,
+#. * when it scrolls like normal mouse wheels.
+#: text.h:126
+msgid "Click-to-click mode"
+msgstr "Режим прокрутки с щелчками"
+
+#: text.h:127
+msgid "Manual mode"
+msgstr "Ручной режим"
+
+#: text.h:128
+msgid "Automatic mode"
+msgstr "Автоматический режим"
+
+#: text.h:129
+msgid "Button number:"
+msgstr "Номер кнопки:"
+
+#. TRANSLATORS: this refers to the speed that a mouse wheel is scrolled up.
+#: text.h:131
+msgid "Up scroll speed:"
+msgstr "Скорость прокрутки вверх:"
+
+#. TRANSLATORS: this refers to the speed that a mouse wheel is scrolled down.
+#: text.h:133
+msgid "Down scroll speed:"
+msgstr "Скорость прокрутки вниз:"
+
+#. TRANSLATORS: do not translate MX Revolution or revoco.
+#: text.h:136
+msgid ""
+"<b>An MX Revolution mouse has not been detected. revoco is disabled.</b>"
+msgstr "<b>Мышь MX Revolution не обнаружена. revoco отключён.</b>"
+
+#. TRANSLATORS: do not translate MX Revolution or revoco.
+#: text.h:139
+msgid "<b>MX Revolution mouse detected. You may enable revoco.</b>"
+msgstr "<b>Мышь MX Revolution обнаружена. Вы можете включить revoco</b>"
+
+#. TRANSLATORS: do not translate revoco, btnx, or MX Revolution.
+#: text.h:142
+msgid ""
+"revoco is a program which allows changing the behavior of MX Revolution's "
+"mouse wheel.\n"
+"It has been integrated into btnx with the blessing of its author.\n"
+"\n"
+"The settings below will take effect when btnx is restarted."
+msgstr ""
+"revoco — это программа, которая позволяет изменить поведение колеса мыши MX "
+"Revolution.\n"
+"Она интегрирована в btnx с разрешения автора.\n"
+"\n"
+"Настройки вступят в силу после перезапуска btnx."
+
+#: text.h:149
+msgid "Error: Creating a configuration backup failed."
+msgstr "Ошибка: Создание резервной копии конфигурации не удалось."
+
+#: text.h:152
+msgid "Error: Restoring configuration backup failed"
+msgstr "Ошибка: Восстановление резервной копии конфигурации не удалось."
+
+#. TRANSLATORS: do not translate "btnx". It is the name of a program
+#: text.h:155
+msgid "Error: could not restart btnx"
+msgstr "Ошибка: не удалось перезапустить btnx"
+
+#. TRANSLATORS: do not translate "btnx". It is the name of a program. Leave
+#. * the command as it is.
+#: text.h:159
+msgid "Failed to execute command: \""
+msgstr "Ошибка выполнения команды: \""
+
+#: text.h:162
+msgid ""
+"btnx failed to start. No suitable configuration was found. Make sure to "
+"fully configure btnx before starting it."
+msgstr ""
+"btnx не смог запуститься. Не найден подходящий файл конфигурации. "
+"Пожалуйста, полностью настройте btnx до запуска."
+
+#: text.h:165
+msgid "btnx failed to start. The configuration file was corrupt or invalid."
+msgstr "btnx не смог запуститься. Конфигурационный файл повреждён."
+
+#: text.h:167
+msgid ""
+"btnx failed to start. It could not locate a suitable input event handler for "
+"the configured device."
+msgstr ""
+"btnx не смог запуститься. Не найдены подходящие обработчики ввода для "
+"настроенного устройства."
+
+#: text.h:170
+msgid ""
+"btnx failed to start. uinput handlers could not be opened. Make sure your "
+"system has uinput kernel modules."
+msgstr ""
+"btnx не смог запуститься. Невозможно открыть обработчики uinput. Убедитесь, "
+"что в вашей системе есть модули ядра uinput."
+
+#. TRANSLATORS: do not edit the <b> formatting tags
+#: text.h:174
+msgid "<b>Advanced settings</b>"
+msgstr "<b>Расширенные настройки</b>"
+
+#. TRANSLATORS: do not edit the <b> formatting tags.
+#. * Hot-plugging refers to device detection and configuration when it is
+#. * plugged into the system while the system is running.
+#: text.h:178
+msgid "<b>Hot-plugging</b>"
+msgstr "<b>Горячее подключение</b>"
+
+#. TRANSLATORS:
+#. * Hot-plugging refers to device detection and configuration when it is
+#. * plugged into the system while the system is running.
+#: text.h:182
+msgid "Enable hot-plugging"
+msgstr "Включить горячее подключение"
+
+#. TRANSLATORS: do not translate WAIT_FOR_SYSFS or udev
+#: text.h:184
+msgid "WAIT_FOR_SYSFS udev option"
+msgstr "Опция udev WAIT_FOR_SYSFS"
+
+#. TRANSLATORS: this describes to the user what a modifier key is. The modifier
+#. * key is a key such as shift, alt, ctrl. The keycode is a keyboard or button
+#. * name. Example: KEY_PAGEUP for a "Page Up" key. The main key refers to the
+#. * keycode (the key that is sent with a modifier key. For example, in
+#. * Ctrl+Alt+B the main key would be "B".
+#: text.h:192
+msgid ""
+"A modifier key for the keycode. This key is sent with the main key to modify "
+"its behavior. Examples: shift, alt, ctrl."
+msgstr ""
+"Модификатор для кода клавиши. Модификатор посылается вместе с основным кодом "
+"клавиши для изменении её обработки. Например: shift, alt, ctrl."
+
+#. TRANSLATORS: do not translate btnx. It is the name of a program.
+#: text.h:196
+msgid ""
+"Select the type of event sent by btnx when pressing this button. You can "
+"either send a key combination or execute a command."
+msgstr ""
+"Выберите тип события, которое посылает btnx при нажатии на эту кнопку. Вы "
+"можете отправить комбинацию клавиш или выполнить команду."
+
+#. TRANSLATORS: button refers to a mouse button.
+#: text.h:201
+msgid "Error: button detection start error"
+msgstr "Ошибка: не удалось запустить обнаружение кнопки"
+
+#. TRANSLATORS: button refers to a mouse button.
+#: text.h:204
+msgid ""
+"Button detection startup failed. Try again. If the problem persists, file a "
+"bug report."
+msgstr ""
+"Запуск обнаружения кнопки мыши не удался. Попытайтесь снова. Если проблема "
+"не прекращается, отправьте сообщение об ошибке разработчикам."
+
+#: text.h:208
+msgid ""
+"Press a single button on your mouse until the detection progress bar is "
+"full.\n"
+"\n"
+"Press Cancel to discard all changes.\n"
+msgstr ""
+"Нажимайте по одной кнопке на вашей мыши, пока индикатор выполнения "
+"обнаружения не заполнится.\n"
+"\n"
+"Нажмите «Отменить» для отмены всех действий.\n"
+
+#. TRANSLATORS: button refers to a mouse button. "Add" is the label of a button.
+#. * The "Add" label is automatically translated by the system and your
+#. * translation should be the same. If you don't know what name your system
+#. * uses for the "Add" button, try running some programs that use it.
+#: text.h:216
+msgid ""
+"A button has been detected. Give it a name that you will recognize in the "
+"future.\n"
+"Then press Add to add it to the configuration."
+msgstr ""
+"Кнопка обнаружена. Укажите название, по которому вы узнаете её в "
+"дальнейшем.\n"
+"После этого нажмите «Добавить» для сохранения кнопки в конфигурации."
+
+#: text.h:220
+msgid "Button detection problem"
+msgstr "Проблема обнаружения кнопки"
+
+#. TRANSLATORS: do not translate btnx. It is the name of a program. Cancel
+#. * is the name of a button. Make sure to translate it to the same name that
+#. * your system uses on all "Cancel" buttons. Rawcode is used elsewhere in the
+#. * program. Make sure to use the same translation here.
+#. * The user doesn't necessarily need to understand what "rawcode"
+#. * means. It is a 32-bit integer value in hexadecimal form, intercepted from an
+#. * input stream. It is called "raw" because it has not been modified to make
+#. * it more readable or understandable.
+#: text.h:230
+msgid ""
+"A problem has occurred during button detection.\n"
+"Multiple mouse buttons have been detected. There are three possible causes:\n"
+"\n"
+"1. You pressed different buttons too many times. Press Cancel and try "
+"again.\n"
+"2. You pressed a previously detected button too many times. Press Cancel and "
+"try again\n"
+"3. Your mouse button sends more than one event when pressing that button. "
+"btnx cannot handle more than one event during a button press. You must "
+"choose one rawcode below to associate with that button.\n"
+"(Hint: choose the one with the most clicks. If there are multiple rawcodes "
+"with the same number of clicks, try one and see if it works. If it doesn't, "
+"try another one next time."
+msgstr ""
+"Во время обнаружения кнопки возникла проблема.\n"
+"Обнаружены нажатия нескольких кнопок. Возможны три причины:\n"
+"\n"
+"1. Вы нажали разные кнопки слишком много раз. Нажмите «Отменить» и "
+"попробуйте ещё раз.\n"
+"2. Вы нажали ранее обнаруженную кнопку слишком много раз. Нажмите «Отменить» "
+"и попробуйте ещё раз.\n"
+"3. Ваша мышь посылает более одного события во время нажатия этой кнопки. "
+"btnx не может работать с более, чем одним событием во время нажатия кнопки. "
+"Вы должны выбрать один код ниже, чтобы связать его с этой кнопкой.\n"
+"(Подсказка: выбирайте код с наибольшим числом щелчков. Если есть несколько "
+"кодов с одним и тем же числом щелчков, выберите один и посмотрите, будет ли "
+"он работать. Если нет, попробуйте другой."
+
+#. TRANSLATORS: keycode is used elsewhere in the program. Use the same
+#. * translation here. The keycode is a keyboard or button
+#. * name. Example: KEY_PAGEUP for a "Page Up" key.
+#: text.h:246
+msgid "Error: no keycode file"
+msgstr "Ошибка: нет файла кодов клавиш"
+
+#. TRANSLATORS: Do not translate btnx-config
+#. * or btnx, they are the names of programs.
+#: text.h:250
+msgid ""
+"btnx-config needs the file /etc/btnx/events to run. Make sure you have "
+"installed btnx first, and that the file exists."
+msgstr ""
+"btnx-config требует файл /etc/btnx/events для запуска. Убедитесь, что вы "
+"сначала установили btnx, и что этот файл существует."
+
+#. TRANSLATORS: glade is the name of a program and a file extension type.
+#. * Do not translate it.
+#: text.h:255
+msgid "Error: no glade file"
+msgstr "Ошибка: нет файла glade"
+
+#. TRANSLATORS: btnx-config is the name of a program. Do not translate it
+#: text.h:258
+msgid ""
+"btnx-config could not find the necessary btnx-config.glade file. This file "
+"is necessary for btnx-config to run. Try reinstalling the program to fix the "
+"problem."
+msgstr ""
+"btnx-config не смог найти необходимый файл btnx-config.glade. Этот файл "
+"необходим для запуска btnx-config. Попробуйте переустановить программу, "
+"чтобы исправить проблему."
+
+#. TRANSLATORS: device ID is an identification number for a device, in this
+#. * case, an input device. The text informs the user that the program has
+#. * detected more than one different device ID, which is a problem.
+#: text.h:265
+msgid "Device ID conflict detected"
+msgstr "Обнаружен конфликт ID устройств"
+
+#. TRANSLATORS: device ID is an identification number for a device. btnx is a
+#. * program name. Do not translate it. The phrase "btnx will not handle that
+#. * button at all" means that the program will not do anything when that button
+#. * is pressed. It will ignore the button.
+#: text.h:271
+msgid ""
+"Multiple device IDs were detected during mouse detection. btnx cannot "
+"simultaneously handle multiple devices. \n"
+"\n"
+"If you accidentally did something with another input device, try detecting "
+"again.\n"
+"\n"
+"If this is a reoccurring problem, it's possible that your device will not "
+"work with btnx. If this happens when pressing some specific button, do not "
+"press it: this means btnx will not handle that button at all."
+msgstr ""
+"Обнаружены несколько идентификаторов (ID) устройств во время определения "
+"мыши. btnx не может управлять несколькими устройствами одновременно. \n"
+"Если вы случайно использовали другие устройства ввода, попытайтесь запустить "
+"процесс обнаружения снова.\n"
+"Если эта ошибка повторяется, скорее всего btnx не будет работать с вашим "
+"устройством. Если это происходит только при нажатии определенных кнопок — не "
+"нажимайте их. Тогда btnx просто не будет их обрабатывать."
+
+#. TRANSLATORS: Cancel, Forward, and Undo are button names. Make sure these
+#. * names are translated exactly as the buttons are in your system language.
+#. * If you are unsure, try to find programs that use these buttons.
+#: text.h:284
+msgid ""
+"OK, move your mouse now and press each button on it.\n"
+"\n"
+"You can stop the detection by pressing the button above.\n"
+"Press Cancel to discard all changes.\n"
+"Press Forward to proceed to the button detection phase.\n"
+"\n"
+"If you think you did something wrong (like pressed a \n"
+"keyboard button), press Undo to restart the test."
+msgstr ""
+"Теперь двигайте мышь и нажмите каждую кнопку на ней.\n"
+"Остановить процесс обнаружения можно нажатием на кнопку вверху.\n"
+"Нажмите «Отменить» для отмены всех изменений.\n"
+"Нажмите «Вперёд» для запуска фазы обнаружения кнопок.\n"
+"\n"
+"Если вы считаете что сделали что-то неверное (например нажали\n"
+"клавишу на клавиатуре), перезапустите тест."
+
+#: text.h:292
+msgid ""
+"Press the button above to start the detection process. Once the test has "
+"started, DO NOT move your mouse or press its buttons until told to do so."
+msgstr ""
+"Нажмите на кнопку вверху для запуска процесса обнаружения. Когда тест "
+"начнется, НЕ двигайте мышь и НЕ нажимайте кнопки на ней до тех пор, пока не "
+"будет написано сделать это."
+
+#: text.h:297
+msgid ""
+"DO NOT move your mouse or\n"
+"press its buttons for 5 seconds."
+msgstr ""
+"НЕ двигайте мышь и НЕ нажимайте\n"
+"кнопки на ней в течении 5 секунд."
+
+#. TRANSLATORS: Cancel and OK are button names. Make sure these
+#. * names are translated exactly as the buttons are in your system language.
+#. * If you are unsure, try to find programs that use these buttons.
+#: text.h:304
+msgid ""
+"Press the button above to start the button detection. \n"
+"\n"
+" Press Cancel to discard all changes.\n"
+" Press OK to to finish the button detection."
+msgstr ""
+"Нажмите на кнопку вверху для запуска процесса обнаружения кнопок. \n"
+"\n"
+"Нажмите «Отменить» для отмены всех изменений.\n"
+"Нажмите «OK» для завершения обнаружения кнопок."
+
+#. TRANSLATORS: do not translate btnx-config. It is the name of a program.
+#: threads.c:51
+#, c-format
+msgid "Quitting btnx-config...\n"
+msgstr "Выход из btnx-config...\n"
+
+#. TRANSLATORS: Property is the title of a table column. Make it as short
+#. * as possible. Abbreviate if necessary. It refers to a property that
+#. * a certain group can have.
+#: tree_buttons.c:51
+msgid "Property"
+msgstr "Свойство"
+
+#. TRANSLATORS: Value is the title of a table column. Make it as short
+#. * as possible. Abbreviate if necessary. It refers to the value that a
+#. * certain property can have. For example, color can be a property and
+#. * blue is one possible value.
+#: tree_buttons.c:64
+msgid "Value"
+msgstr "Значение"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Enabled can be
+#. * either true or false. In this case, it means whether the program should
+#. * ignore a certain mouse button or do something when it is being pressed.
+#. TRANSLATORS: Enabled can be
+#. * either true or false. In this case, it means whether the program should
+#. * ignore a certain mouse button or do something when it is being pressed.
+#. * It is used elsewhere in the program. Make sure you use the same
+#. * translation here.
+#: tree_buttons.c:191 widgets.c:115
+msgid "Enabled"
+msgstr "Включена"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Evtype is already
+#. * abbreviated from the words "Event type". This refers to the type of
+#. * event that should be sent by the program when it recognizes it must do
+#. * something.
+#: tree_buttons.c:199
+msgid "Evtype"
+msgstr "Событие"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Delay refers to a
+#. * certain time interval during which the program should wait.
+#: tree_buttons.c:205
+msgid "Delay"
+msgstr "Задержка"
+
+#: tree_buttons.c:209
+msgid "Release"
+msgstr "Отпускание"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. This word is used
+#. * elsewhere in the program. The keycode is a keyboard or button
+#. * name. Example: KEY_PAGEUP for a "Page Up" key.
+#: tree_buttons.c:216
+msgid "Keycode"
+msgstr "Код клавиши"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Modifier refers
+#. * to a keyboard modifier key. Examples: Shift, Ctrl, Alt. Make sure to
+#. * include the number at the end.
+#: tree_buttons.c:223
+msgid "Modifier1"
+msgstr "Модификатор1"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Modifier refers
+#. * to a keyboard modifier key. Examples: Shift, Ctrl, Alt. Make sure to
+#. * include the number at the end.
+#: tree_buttons.c:230
+msgid "Modifier2"
+msgstr "Модификатор2"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Modifier refers
+#. * to a keyboard modifier key. Examples: Shift, Ctrl, Alt. Make sure to
+#. * include the number at the end.
+#: tree_buttons.c:237
+msgid "Modifier3"
+msgstr "Модификатор3"
+
+#: tree_buttons.c:241
+msgid "Switch type"
+msgstr "Переключатель"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. The UID refers
+#. * to User Identification, a number referring to a user in a
+#. * Linux system. Do not try to translate UID unless it is explicitly
+#. * used differently by Linux in your language.
+#: tree_buttons.c:253
+msgid "UID"
+msgstr "UID"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. Command refers
+#. * to a shell command that can be executed.
+#: tree_buttons.c:259
+msgid "Command"
+msgstr "Команда"
+
+#: tree_config.c:49
+msgid "Open"
+msgstr "Открыта"
+
+#: tree_config.c:58
+msgid "Priority"
+msgstr "Приоритет"
+
+#: tree_config.c:67
+msgid "Name"
+msgstr "Имя"
+
+#: widgets.c:85
+msgid "<b>Manage configurations</b>"
+msgstr "<b>Управление конфигурациями</b>"
+
+#: widgets.c:86
+msgid "<b>Current configuration</b>"
+msgstr "<b>Текущая конфигурация</b>"
+
+#: widgets.c:87
+msgid "<b>Device detection</b>"
+msgstr "<b>Обнаружение устройств</b>"
+
+#: widgets.c:88
+msgid "<b>Mouse properties</b>"
+msgstr "<b>Свойства мыши</b>"
+
+#: widgets.c:89
+msgid "Backup"
+msgstr "Сохранить"
+
+#: widgets.c:90
+msgid "Restore"
+msgstr "Восстановить"
+
+#: widgets.c:91
+msgid "Configuration name:"
+msgstr "Имя конфигурации:"
+
+#. TRANSLATORS: keep this short. It is the label of a button.
+#: widgets.c:93
+msgid "Detect mouse & buttons"
+msgstr "Обнаружить мыши и кнопки"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. It refers to the
+#. * name of the manufacturer of a device.
+#: widgets.c:96
+msgid "Vendor:"
+msgstr "Производитель:"
+
+#. TRANSLATORS: Make this short. Abbreviate if necessary. It refers to the
+#. * name of a certain product (a mouse in this case, example: MX-600).
+#: widgets.c:99
+msgid "Product:"
+msgstr "Продукт:"
+
+#: widgets.c:105
+msgid "<b>Button properties</b>"
+msgstr "<b>Свойства кнопки</b>"
+
+#: widgets.c:106
+msgid "<b>General</b>"
+msgstr "<b>Основные</b>"
+
+#: widgets.c:107
+msgid "<b>Key combination</b>"
+msgstr "<b>Комбинация клавиш</b>"
+
+#: widgets.c:108
+msgid "<b>Configuration switch</b>"
+msgstr "<b>Переключение конфигурации</b>"
+
+#: widgets.c:109
+msgid "<b>Command execution</b>"
+msgstr "<b>Выполнение команды</b>"
+
+#. TRANSLATORS: name refers to the name of button given by the user. It is
+#. * _not_ the name of a person.
+#: widgets.c:118
+msgid "Name:"
+msgstr "Название:"
+
+#. TRANSLATORS: This refers to the type of
+#. * event that should be sent by the program when it recognizes it must do
+#. * something.
+#: widgets.c:122
+msgid "Event type:"
+msgstr "Тип события:"
+
+#: widgets.c:128
+msgid "Repeat delay:"
+msgstr "Задержка повтора:"
+
+#. TRANSLATORS: This word is used
+#. * elsewhere in the program. Make sure to use the same translation here.
+#. * The keycode is a keyboard or button
+#. * name. Example: KEY_PAGEUP for a "Page Up" key.
+#: widgets.c:134
+msgid "Keycode:"
+msgstr "Код клавиши:"
+
+#: widgets.c:146
+msgid "Switch to:"
+msgstr "Переключиться на:"
+
+#. TRANSLATORS: this refers to the shell command that should be
+#. * executed by the program.
+#: widgets.c:149
+msgid "Execute command:"
+msgstr "Выполнить команду:"
+
+#. TRANSLATORS: this refers to the UID that a certain launched process
+#. * should use. It is used in conjuction with "Execute command".
+#. * The UID refers
+#. * to User Identification, a number referring to a user in a
+#. * Linux system. Do not try to translate UID unless it is explicitly used
+#. * differently in your language.
+#: widgets.c:156
+msgid "Process UID:"
+msgstr "UID процесса:"
+
+#: widgets.c:182
+msgid "<b>Detection status</b>"
+msgstr "<b>Состояние обнаружения</b>"
+
+#: widgets.c:188
+msgid "<b>Button detection</b>"
+msgstr "<b>Обнаружение кнопки</b>"
+
+#: widgets.c:190
+msgid "Detection progress"
+msgstr "Прогресс обнаружения"
+
+#: widgets.c:191
+msgid "Status:"
+msgstr "Состояние:"
+
+#. TRANSLATORS: the button refers to a mouse button.
+#: widgets.c:193
+msgid "Button name:"
+msgstr "Название кнопки:"
+
+#: widgets.c:207
+msgid "Enter the name of this configuration."
+msgstr "Введите имя данной конфигурации."
+
+#: widgets.c:210
+msgid "Create a new configuration."
+msgstr "Создать новую конфигурацию."
+
+#: widgets.c:213
+msgid "Delete the selected configuration."
+msgstr "Удалить выбранную конфигурацию."
+
+#: widgets.c:216
+msgid "Increase the selected configuration's priority."
+msgstr "Увеличить приоритет выбранной конфигурации."
+
+#: widgets.c:219
+msgid "Decrease the selected configuration's priority."
+msgstr "Уменьшить приоритет выбранной конфигурации."
+
+#: widgets.c:222
+msgid "Backup all configurations and settings to a file."
+msgstr "Сохранить все конфигурации и настройки в файл резервной копии."
+
+#: widgets.c:225
+msgid "Restore all configurations and settings from a backup file."
+msgstr "Восстановить все конфигурации и настройки из файла резервной копии."
+
+#: widgets.c:230
+msgid "Delete the currently selected button"
+msgstr "Удалить выбранную кнопку"
+
+#: widgets.c:233
+msgid "Select a button from the list to edit its properties"
+msgstr "Выберите кнопку из списка, чтобы отобразить её свойства"
+
+#: widgets.c:236
+msgid "Go to the mouse and button detection utility"
+msgstr "Перейти к окну обнаружения мышей и кнопок"
+
+#: widgets.c:239
+msgid "Enter the name of your mouse manufacturer"
+msgstr "Введите производителя вашей мыши"
+
+#: widgets.c:242
+msgid "Enter the model name of your mouse"
+msgstr "Введите модель вашей мыши"
+
+#. TRANSLATORS: do not translate btnx. It is the name of a program.
+#: widgets.c:246
+msgid "Enable|Disable this button for use with btnx"
+msgstr "Включить|Выключить использование этой кнопки программой btnx"
+
+#: widgets.c:249
+msgid "The name of this button"
+msgstr "Название данной кнопки"
+
+#. TRANSLATORS: this describes to the user what "Repeat delay" means. Do not
+#. * translate btnx, it is the name of a program.
+#: widgets.c:260
+msgid ""
+"The delay in milliseconds before btnx will allow this button to send another "
+"event after being pressed. This is useful if your button is very sensitive "
+"or sends many signals at once."
+msgstr ""
+"Задержка в миллисекундах перед тем, как позволить кнопке послать другой "
+"сигнал после нажатия. Позволяет бороться с излишне чувствительными кнопками "
+"или кнопками, которые посылают несколько сигналов."
+
+#: widgets.c:265
+msgid ""
+"Force btnx to send a button release signal right after the button is "
+"pressed. Helps with buttons that get stuck. The button cannot be held down."
+msgstr ""
+"Посылать сигнал освобождения кнопки после её нажатия. Это помогает бороться "
+"с «залипшими» кнопками. В таком случае кнопка не может быть быть «зажата»."
+
+#. TRANSLATORS: btnx is the name of a program. Do not translate it. The modifer
+#. * key is a keyboard key that can be, for example, Shift, Ctrl, or Alt.
+#: widgets.c:271
+msgid ""
+"The key or mouse button sent by btnx when pressing this button. It can be "
+"accompanied by up to three modifier keys."
+msgstr ""
+"Клавиша или кнопка, которая будет виртуально нажата при нажатии на указанную "
+"кнопку мыши. Может сопровождаться несколькими клавишами-модификаторами (до "
+"трёх)."
+
+#: widgets.c:293
+msgid "Switch to the next configuration with a lower priority."
+msgstr "Переключиться на следующую конфигурацию (с приоритетом ниже)."
+
+#: widgets.c:296
+msgid "Switch to the previous configuration with a higher priority."
+msgstr "Переключиться на предыдущую конфигурацию (с приоритетом выше)."
+
+#: widgets.c:299
+msgid ""
+"Switch to the configuration selected in the drop-down list to the right."
+msgstr "Переключиться на конфигурацию, указанную в списке справа."
+
+#. TRANSLATORS: do not translate btnx. It is the name of a program.
+#: widgets.c:303
+msgid ""
+"The shell command sent by btnx when pressing this button. The first word "
+"must be the full path of the program (Example: /usr/bin/gedit) followed by "
+"optional arguments."
+msgstr ""
+"Команда, которая будет выполнена при нажатии этой кнопки. Должен быть указан "
+"полный путь до программы (например, /usr/bin/gedit), после которого могут "
+"следовать аргументы."
+
+#. TRANSLATORS: The UID refers
+#. * to User Identification, a number referring to a user in a
+#. * Linux system. Do not try to translate UID unless it is explicitly. Try
+#. * to make this sound serious, because the user might be doing something that
+#. * compromises their system security!
+#: widgets.c:313
+msgid ""
+"The UID of the owner of the process started by the command. Change this to "
+"your UID or the UID defaults to 0. This means the PROCESS WILL BE RUN AS "
+"ROOT (not recommended, unless necessary)."
+msgstr ""
+"UID владельца процесса, который будет запущен командой. Измените его в "
+"соответствии с вашим UID или в UID по умолчанию 0. Это означает, что ПРОЦЕСС "
+"БУДЕТ ЗАПУСКАТЬСЯ ОТ ИМЕНИ СУПЕРПОЛЬЗОВАТЕЛЯ (не рекомендуется, если это не "
+"обязательно)."
+
+#. TRANSLATORS: do not translate btnx. It is the name of a program.
+#: widgets.c:325
+msgid "Restart btnx with the current settings"
+msgstr "Перезапустить btnx с текущими настройками"
+
+#: widgets.c:331
+msgid "View information about this program"
+msgstr "Информация о программе"
+
+#. TRANSLATORS: do not translate btnx-config. It is the name of a program.
+#: widgets.c:335
+msgid "Close btnx-config"
+msgstr "Закрыть btnx-config"
+
+#: widgets.c:340
+msgid "If enabled, btnx will launch revoco with the settings below."
+msgstr "Если включено, btnx запустит revoco с настройками, указанными ниже."
+
+#: widgets.c:343
+msgid "Set the mouse wheel to free scroll where it spins without friction."
+msgstr ""
+"Переключить колесо мыши в режим свободной прокрутки, когда оно вращается без "
+"помех."
+
+#: widgets.c:346
+msgid ""
+"Set the mouse wheel to click-to-click scroll where it spins like a normal "
+"mouse wheel"
+msgstr ""
+"Переключить колесо мыши в режим прокрутки с щелчками, как у обычной мыши."
+
+#: widgets.c:350
+msgid ""
+"Select a mouse button to switch between free-scroll and click-to-click mode."
+msgstr ""
+"Выбрать кнопку для переключения мыши между свободным режимом и режимом с "
+"щелчками."
+
+#: widgets.c:353
+msgid ""
+"Set the mouse wheel to automatic which switches the mode to free-scroll "
+"automatically when you scroll it up or down faster than the values selected "
+"on the right."
+msgstr ""
+"Установить мышь в автоматический режим, при котором она будет переключаться "
+"в свободный режим, если вы будете прокручивать колесо мыши быстрее, чем "
+"указано в настройках справа."
+
+#: widgets.c:360
+msgid ""
+"This setting starts btnx automatically when you plug in your mouse. Also "
+"starts btnx after standby. Useful for laptops."
+msgstr ""
+"Этот параметр позволяет запускать btnx, когда вы подключаете вышу мышь и "
+"после пробуждения системы. Может использоваться для ноутбуков."
+
+#: widgets.c:364
+msgid ""
+"Set the WAIT_FOR_SYSFS udev option in btnx's udev rule. Some systems have "
+"trouble with hot-plugging with this enabled, others have trouble with it "
+"disabled."
+msgstr ""
+"Установить опцию WAIT_FOR_SYSFS в правиле btnx для udev. Горячее подключение "
+"может работать неправильно на некоторых системах, если этот параметр отмечен "
+"или, наоборот, не отмечен."
+
+#: widgets.c:371
+msgid "Start|Stop mouse detection"
+msgstr "Запустить|Остановить обнаружение мыши"
+
+#: widgets.c:380
+msgid "Remove detection information"
+msgstr "Удалить информацию обнаружений"
+
+#: widgets.c:383
+msgid "Continue to button detection"
+msgstr "Перейти к обнаружению кнопок"
+
+#: widgets.c:388
+msgid "Start|Stop button detection"
+msgstr "Запустить|Остановить обнаружение кнопок"
+
+#: widgets.c:391
+msgid "Give this button a unique name"
+msgstr "Подберите уникальное название для этой кнопки"
+
+#. TRANSLATORS: this is a tooltip that appears when a user hovers over an
+#. * add button. Its function is to add a mouse button to a list that the
+#. * user has detected with the program.
+#: widgets.c:403
+msgid "Add the button"
+msgstr "Добавить кнопку"
+
+#. TRANSLATORS: buttons refers to mouse buttons. This saves information
+#. * about buttons that the user has detected with the program.
+#: widgets.c:408
+msgid "Save the buttons and return to the main window"
+msgstr "Сохранить кнопки и вернуться в главное окно"
+
+#. TRANSLATORS: do not translate btnx or Button Extension. They are
+#. * names of a program. You may add additional words to provide a translation
+#. * for "Button Extension" in your language.
+#: widgets.c:444
+msgid "A configuration utility for btnx (Button Extension)"
+msgstr "Конфигурационная утилита для программы btnx (Button Extension)"

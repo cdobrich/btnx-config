@@ -1,0 +1,112 @@
+btnx-config ChangeLog
+
+2008-04-28	v.0.4.9
+	* Updated icons.
+	* udev rule fixed for btnx v.0.4.10.
+
+2008-04-03	v.0.4.8
+	* Updated manual.
+	* Includes Russian translations.
+
+2008-03-06	v.0.4.7
+	* Button code structures have changed. Breaks backward compatibility.
+	Kernel 2.6.24 apparently caused changes in the input interface which
+	broke the old model. Now struct input_events are read like they should
+	have been in the beginning.
+	* Should fix button detection problem for Ubuntu Hardy users.
+	* Backed up configurations have to be discarded. Use only with
+	btnx v. >= 0.4.7
+
+2008-01-06	v.0.4.6
+	* French translation update.
+
+2008-01-01	v.0.4.5
+	* Includes French translations.
+	* German translation update.
+
+2007-12-13	v.0.4.4
+	* Dutch translation update.
+	* Maintainers: package uses GNU gettext to configure, build, and install
+	internationalization. Use the common gettext ./configure options to
+	change the I18n build options.
+	--with-included-gettext uses the included GNU libintl. Not necessary unless 
+	your distro lacks GNU gettext.
+	--disable-nls disables I18n support for btnx-config
+	
+2007-12-10	v.0.4.3
+	* Includes Dutch translations.
+
+2007-12-10	v.0.4.2
+	* Includes German translations.
+
+2007-12-05	v.0.4.1
+	* ./configure option init_scripts_path allows maintainer control over
+	the path to the init scripts directory on their system.
+	* ./configure option udev_rules_path allows maintainer control over
+	the path to the udev rules.d directory on their system.
+	* Updated btnx manual.
+	* .pot file update
+	* Advanced settings: enable hot-plugging (udev rule) and use
+	WAIT_FOR_SYSFS udev rule option.
+
+2007-11-29	v.0.4.0
+	* Version skip to reflect the version of btnx and to avoid confusion.
+	Same minor version numbers of btnx-config and btnx are compatible with
+	each other. Minor number changes may break backward compatibility.
+	* Support for multiple configurations.
+	* New configuration manager screen.
+	* Improved GUI layout. Better structure for button options, removed
+	"Clear" and "Save" buttons (redundant).
+	* New type of event: configuration switch. Allows switching to previous,
+	next, or a specific configuration in btnx "on the fly".
+	* Backup and restore functionality for btnx configurations.
+	* "Force immediate button release" option, helps combat the stuck, pressed
+	button bug.
+	* Updated btnx manual.
+
+2007-11-10	v.0.2.3
+	* Fixed configure.ac kdesu bug.
+	* Updated udev rule.
+
+2007-11-01	v.0.2.2
+	* Fixed revoco value update bug.
+
+2007-10-15	v.0.2.1
+	* Integrated revoco functionality.
+
+2007-08-11	v.0.2.0
+	* First stable release.
+	* Documentation added.
+	* Build process performed by autotools.
+	* Better KDE integration (auto-generated .desktop file, doc support for KDE).
+
+2007-07-15	v.0.1.7
+	* Fixed hot-plugging bug.
+
+2007-14-06	v.0.1.6
+	* Fixed uninstall bug.
+	* Added INSTALL file.
+	* Fixed install script.
+	* Hot-plugging added.
+	* Translator comments added.
+
+2007-07-06	v.0.1.5
+	* Fixed button deletion bug.
+
+2007-07-06	v.0.1.4
+	* First test release for full integration with btnx.
+	* Internationalization support.
+	* Added .desktop file.
+	* File structure changed.
+
+2007-07-03	v.0.1.3
+	* Fix for crash during button detection.
+
+2007-07-02	v.0.1.2
+	* Fix for segfault.
+
+2007-07-02	v.0.1.1
+	* Possible fix for segfault.
+
+2007-07-01	v.0.1.0
+	* First test release (intentionally crippled).

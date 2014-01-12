@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "0.4.8">
+  <!ENTITY manrevision "1.4">
+  <!ENTITY date "April 2008">
+  <!ENTITY app "<application>btnx</application>">
+  <!ENTITY appconfig "<application>btnx-config</application>">
+  <!ENTITY xorg "<filename>xorg.conf</filename>">
+  <!ENTITY appname "btnx">
+]>
+
+<article id="btnx-manual" lang="en">
+  <articleinfo>
+    <title>&appname; Manual</title>
+    <abstract role="description">
+    	<para>&app;, a.k.a. Button Extension, is a program that enables you to route mouse button events as keyboard combinations
+    	and command executions. &appconfig; is a GUI to used to detect your mouse and its buttons, and then
+    	edit the &app; configuration file.</para>
+    	<para>This document describes the usage of &app; and &appconfig;.</para>
+    </abstract>
+    <copyright>
+      <year>2007-2008</year>
+      <holder>Olli Salonen</holder>
+    </copyright>
+
+    &legal;
+
+    <authorgroup>
+      <author role="maintainer">
+        <firstname>Olli</firstname>
+        <surname>Salonen</surname>
+        <email>oasalonen@gmail.com</email>
+      </author>
+    </authorgroup>
+
+    <revhistory>
+      <revision>
+        <revnumber>&appname; Manual &manrevision;</revnumber>
+        <date>2008-02-04</date>
+      </revision>
+      <revision>
+        <revnumber>&appname; Manual 1.3</revnumber>
+        <date>2007-12-05</date>
+      </revision>
+      <revision>
+        <revnumber>&appname; Manual 1.2</revnumber>
+        <date>2007-11-29</date>
+      </revision>
+      <revision>
+        <revnumber>&appname; Manual 1.1</revnumber>
+        <date>2007-10-15</date>
+      </revision>
+      <revision>
+        <revnumber>&appname; Manual 1.0</revnumber>
+        <date>2007-07-18</date>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>This manual describes version 0.4.8 of btnx and version 0.4.8 of btnx-config.</releaseinfo>
+  </articleinfo>
+  
+  
+	<section id="introduction">
+	<title>Introduction</title>
+	    <para>So you have a mouse with a bunch of buttons that do nothing. Is it time to retreat to
+	    the safe haven of MS Windows and its vendor supplied device drivers? &app; will hopefully
+	    reduce the temptation.</para>
+	    <para>&appname;, a.k.a. Button Extension, is a daemon that enables you to route mouse button events as keyboard combinations
+		and command executions. &appconfig; is a GUI used to detect your mouse and its buttons, and then
+		edit the &app; configuration file. Their combination forms something like Logitech's SetPoint software,
+		but it should work with just about any mouse.</para>
+		<para>The interface should be quite self-explanatory and littered with instructions. However,
+		every program has its quirks and needs some explaining. This manual will hopefully leave very
+		little undocumented concerning the usage of &app; and &appconfig;.</para>
+		
+		<para>Why isn't &app; implemented as a driver?</para>
+		<blockquote><attribution>Linus Torvalds, 2001</attribution>
+		<para>Once you realize that documentation should be laughed at, peed upon, put
+		on fire, and just ridiculed in general, THEN, and only then, have you
+		reached the level where you can safely read it and try to use it to
+		actually implement a driver.</para>
+		</blockquote>
+		<para>Because I like to keep my documentation _dry_.</para>
+	</section>
+  
+	<section id="steps">
+		<title>Steps to get &app; working</title>
+	    <para>In order to get &app; working correctly, you have to do the following in the order listed:
+	    <orderedlist>
+	    	<listitem><para><link linkend="installing-source">Install &app;</link></para></listitem>
+	    	<listitem><para><link linkend="running-btnx-config">Run &appconfig;</link>.</para></listitem>
+	    	<listitem><para><link linkend="detecting-mouse">Detect your mouse with &appconfig;</link>.</para></listitem>
+	    	<listitem><para><link linkend="detecting-buttons">Detect your mouse buttons with &appconfig;</link>.</para></listitem>
+	    	<listitem><para><link linkend="configuring-buttons">Configure your buttons with &appconfig;</link>.</para></listitem>
+	    	<listitem><para>Start &app;.</para></listitem>
+	    	<listitem><para>Enjoy.</para></listitem>
+	    </orderedlist>
+	    If the last step fails, see the <link linkend="troubleshooting">Troubleshooting section</link>.
+	    </para>
+	</section>
+	
+	<section id="installing-source">
+	<title>Installing from sources</title>
+		<para>This section describes how to install and uninstall &app; and &appconfig; from the source packages. Some binary packages are available on the &app; website. &app; has also been included in some distros' repositories, including Arch Linux.</para>
+		
+		<section>
+		<title>Installing &app;</title>
+			<para>
+			<orderedlist>
+			<listitem>
+				<para>Make sure you have uinput compiled into the kernel or available as a module. You can test
+				if uinput is available as a module with the command (as root):
+<screen>
+<prompt>#</prompt> <command>modprobe uinput</command>
+</screen>		
+				</para>
+			</listitem>
+			<listitem>
+				<para>Get all the necessary dependencies. &app; v.0.4.8 depends on libdaemon >= 0.10. Ubuntu and Debian users can use the following command:
+<screen>
+<prompt>$</prompt> <command>sudo apt-get install libdaemon0 libdaemon-dev </command>
+</screen>		</para>
+			</listitem>
+			<listitem>
+				<para>Get the newest &app; from <ulink url="http://www.ollisalonen.com/btnx">http://www.ollisalonen.com/btnx</ulink>.</para>
+			</listitem>
+			<listitem>
+				<para>Extract the source package.</para>
+			</listitem>
+			<listitem>
+				<para>Run the following commands in the source top directory to build and install &app; (run "make install" as root):</para>
+<screen>
+<prompt>$</prompt> <command>./configure</command>
+<prompt>$</prompt> <command>make</command>
+<prompt>#</prompt> <command>make install</command>
+</screen>
+			</listitem>
+			</orderedlist>
+			</para>
+			<para>You can give the following parameters to the &app; configure script:
+			<variablelist>
+			<varlistentry>
+  				<term><property>init_scripts_path=<filename>/path/to</filename></property></term>
+  				<listitem>
+  					<para>Set to the path of your system's init script directory.
+  					Default is <filename>/etc/init.d</filename>. Do not append a '/' to the path!</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>config_path=<filename>/path/to</filename></property></term>
+  				<listitem>
+  					<para>Set to the path of the directory where &app; configuration files are stored.
+  					Default is <filename>/etc/btnx</filename>. Do not append a '/' to the path!</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>init_tool=no</property></term>
+  				<listitem>
+  					<para>Install the &app; daemon init script, but do not run any tools to register it. This is useful for package maintainers of certain distros. Default is "yes", which means the configure script autodetects update-rc.d, chkconfig, or rc-update and uses it to register the init script during installation.</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>output_syslog=yes</property></term>
+  				<listitem>
+  					<para>Configure the init script to launch &app; with output directed to syslog. Use this if you want a relatively quiet &app; startup. It is equivalent to calling <command>btnx -l</command> from the command line. Default is "no".</para>
+  				</listitem>
+  			</varlistentry>
+  			</variablelist>
+			</para>
+			<para>&app; should now be installed but isn't running because it doesn't have a configuration file.
+			You need &appconfig; for this.</para>
+		</section>
+		
+		<section>
+		<title>Installing &appconfig;</title>
+			<para>
+			<orderedlist>
+			<listitem>
+				<para>Get all the necessary dependencies. If your distro has apt-get and fresh enough packages for
+				the dependencies, you can use the following command (ie. Ubuntu >= 7.04 users):
+<screen>
+<prompt>$</prompt> <command>sudo apt-get install build-essential libgtk2.0-0 libgtk2.0-dev libglade2-0 libglade2-dev pkg-config </command>
+</screen>
+				Omit or replace build-essential if your distro packages gcc and its friends in another way. Here are
+				the dependencies and their versions:
+				<orderedlist>
+				<listitem>
+					<para>libglade >= 2.6.0 (<ulink url="ftp://ftp.gnome.org/mirror/gnome.org/sources/libglade/2.6/">ftp download</ulink>)</para>
+				</listitem>
+				<listitem>
+					<para>libgtk2.0 >= 2.10.11 (<ulink url="http://www.gtk.org/download/">download page</ulink>)</para>
+				</listitem>
+				<listitem>
+					<para>pkg-config >= 0.21 (<ulink url="http://pkgconfig.freedesktop.org/releases/">download page</ulink>)</para>
+				</listitem>
+				</orderedlist>
+				You can now check that all dependencies are satisfied with pkg-config
+<screen>
+<prompt>$</prompt> <command>pkg-config --modversion gtk+-2.0</command>
+<prompt>$</prompt> <command>pkg-config --modversion libglade-2.0</command>
+<prompt>$</prompt> <command>pkg-config --version</command>
+</screen>
+				</para>
+			</listitem>
+			<listitem>
+				<para>Get the newest &appconfig; from <ulink url="http://www.ollisalonen.com/btnx">http://www.ollisalonen.com/btnx</ulink>.</para>
+			</listitem>
+			<listitem>
+				<para>Extract the source package.</para>
+			</listitem>
+			<listitem>
+				<para>Run the following commands in the source top directory to build and install &appconfig;:</para>
+<screen>
+<prompt>$</prompt> <command>./configure</command>
+<prompt>$</prompt> <command>make</command>
+<prompt>#</prompt> <command>make install</command>
+</screen>
+			</listitem>
+			</orderedlist>
+			</para>
+			<para>You can give certain parameters to the &appconfig; configure script:
+			<variablelist>
+			<varlistentry>
+  				<term><property>init_scripts_path=<filename>/path/to</filename></property></term>
+  				<listitem>
+  					<para>Set to the path of your system's init script directory.
+  					Default is <filename>/etc/init.d</filename>. Do not append a '/' to the path!</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>udev_rules_path=<filename>/path/to</filename></property></term>
+  				<listitem>
+  					<para>Set to the path of your system's udev rules.d directory.
+  					Default is <filename>/etc/udev/rules.d</filename>. Do not append a '/' to the path!</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>builddocs=no</property></term>
+  				<listitem>
+  					<para>Do not install this manual with &appconfig;.</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>--disable-nls</property></term>
+  				<listitem>
+  					<para>Disable internationalization support for &appconfig;.</para>
+  				</listitem>
+  			</varlistentry>
+  			<varlistentry>
+  				<term><property>--prefix=<filename>path</filename></property></term>
+  				<listitem>
+  					<para>&app;-installation prefix. The default is recommended.</para>
+  				</listitem>
+  			</varlistentry>
+  			</variablelist>
+			</para>
+		</section>
+		
+		<section>
+		<title>Upgrading</title>
+			<para>If you are upgrading from &app; or &appconfig; older than 0.4.7, you do not need to uninstall. However, these versions use incompatible configuration files. You will need to redetect and reconfigure your mouse.</para>
+			<para>If you are upgrading from &app;-0.2.x or &appconfig;-0.1.x, make sure to uninstall them first.
+			The file structures have changed since then and you might be left with orphaned files on your system,
+			or an nonworking installation.</para>
+			<para>Also, if you used the <computeroutput>install-generic</computeroutput> target for &app;-0.2.x,
+			you no longer need to use it. In fact, no such target exists anymore.</para>
+		</section>
+		
+		<section>
+		<title>Uninstallation</title>
+			<para>To uninstall either &app; or &appconfig;, run the following command in the extracted source
+			package directory as root:
+<screen>
+<prompt>#</prompt> <command>make uninstall</command>
+</screen>
+			Uninstalling &appconfig; will not affect your &app; configuration.</para>
+		</section>
+	</section>
+  
+  <section id="running-btnx-config">
+  	<title>Running &appconfig;</title>
+  		<para>Installing &app; and &appconfig; should have created a menu entry in your system.
+  		GNOME users can find it under
+  		<guimenu>Applications-></guimenu>
+  		<guimenuitem>System tools-></guimenuitem>
+  		<guimenuitem>btnx</guimenuitem>. In KDE, the menu item is located at
+  		<guimenu>System-></guimenu>
+  		<guimenuitem>btnx</guimenuitem>. Click on it to start &appconfig;.</para>
+  		<para>If, for some reason, the menu entry doesn't exist or the program doesn't start, try starting
+  		&appconfig; from the command line as root:</para>
+<screen>
+<prompt>#</prompt> <command>btnx-config</command>
+</screen>
+  		<para>You might get some warning messages, but don't worry about them if the program works. 
+  		If you get errors and the program doesn't work, see the <link linkend="troubleshooting">Troubleshooting section</link>.</para>
+  		<para>Once &appconfig; has started correctly, the window below is shown.</para>
+  		<screenshot>
+  			<screeninfo>&appconfig; startup</screeninfo>
+  			<mediaobject>
+  			<imageobject> <imagedata fileref="figures/btnx-screenshot-1.png" format="PNG" /> </imageobject>
+  			<textobject> <phrase>&appconfig; startup screen</phrase> </textobject>
+  			<caption> <para>&appconfig; startup screen (as seen in GNOME)</para> </caption>
+  			</mediaobject>
+  		</screenshot>
+  		<para>At this point, no mouse or buttons have been detected. You will have to detect them
+  		before defining their functionality (see <link linkend="detecting-mouse">"Detecting the mouse"</link> and
+  		<link linkend="detecting-buttons">"Detecting buttons"</link> sections).</para>
+  </section>
+  
+  <section id="detecting-mouse">
+  	<title>Detecting the mouse</title>
+  		<para>This section describes how you can detect your mouse with &appconfig;.</para>
+  		<para>You can start the mouse detection by pressing the <guibutton>Detect mouse and buttons</guibutton> button
+  		at the Configuration Manager window of &appconfig;. If you haven't detected
+  		your mouse yet, it will open the mouse detection window.</para>
+  		
+  		<section>
+	  		<title>Quick guide:</title>
+	  		<para>
+	  		<orderedlist>
+	  			<listitem><para>Press the <guibutton>Press to start mouse detection</guibutton> button.</para></listitem>
+	  			<listitem><para>Wait until told to move your mouse.</para></listitem>
+	  			<listitem><para>Move your mouse and press all its buttons.</para></listitem>
+	  			<listitem><para>Press <guibutton>Forward</guibutton></para></listitem>
+	  		</orderedlist>
+	  		</para>
+  		</section>
+  		
+  		<section>
+	  		<title>In depth guide:</title>
+	  		<para>To start the mouse detection, press the <guibutton>Press to start mouse detection</guibutton> button.
+	  		At this point, do not interact with any of your input devices. This means, do not move your mouse,
+	  		press its buttons, press any keyboard buttons, etc. After a couple of seconds, you are told to
+	  		move your mouse.</para>
+	  		<screenshot>
+	  			<screeninfo>&appconfig; mouse detection</screeninfo>
+	  			<mediaobject>
+	  			<imageobject> <imagedata fileref="figures/btnx-screenshot-2.png" format="PNG" /> </imageobject>
+	  			<textobject> <phrase>&appconfig; mouse detection</phrase> </textobject>
+	  			<caption> <para>&appconfig; mouse detection</para> </caption>
+	  			</mediaobject>
+  			</screenshot>
+	  		<para>Now, move your mouse. &appconfig; should have detected your mouse. The <guilabel>Detected handlers</guilabel> should
+	  		have increased to one, and the <guilabel>Vendor ID</guilabel> and <guilabel>Product ID</guilabel> labels should have been 
+	  		set to something other than 0x0000.</para>
+	  		<screenshot>
+	  			<screeninfo>&appconfig; mouse detection complete</screeninfo>
+	  			<mediaobject>
+	  			<imageobject> <imagedata fileref="figures/btnx-screenshot-3.png" format="PNG" /> </imageobject>
+	  			<textobject> <phrase>&appconfig; mouse detection complete</phrase> </textobject>
+	  			<caption> <para>&appconfig; mouse detection complete</para> </caption>
+	  			</mediaobject>
+  			</screenshot>
+	  		<para>Make sure to press each button on your mouse. This isn't necessary for most mice. However, some
+	  		mice, like the Logitech MX Revolution, have additional handlers for some buttons. All these handlers must be
+	  		detected in order for those buttons to work correctly.</para>
+	  		<para>You can press the <guibutton>Press to stop mouse detection</guibutton> button to stop the mouse detection, 
+	  		or press <guibutton>Forward</guibutton> to proceed to the next step.
+	  		You can also stop the mouse detection and revert all changes by pressing
+	  		<guibutton>Undo</guibutton>. Another way is to stop the mouse detection and start it again.</para>
+	  		<para>When you are done detecting the mouse, press <guibutton>Forward</guibutton> to go to the button detection phase.
+	  		If you press <guibutton>Cancel</guibutton>, all changes are discarded and the detection wizard closes.</para>
+	  		<para>If you encountered any errors or problems during the mouse detection, refer to the 
+	  		<link linkend="troubleshooting">Troubleshooting section</link> of this manual.</para>
+	  		<para>If you get the "Device ID conflict detected" error window as seen below, refer to the 
+	  		<link linkend="troubleshoot-id-conflict">Device ID conflict</link> section in Troubleshooting.</para>
+	  		<screenshot>
+	  			<screeninfo>&appconfig; device ID conflict</screeninfo>
+	  			<mediaobject>
+	  			<imageobject> <imagedata fileref="figures/btnx-screenshot-8.png" format="PNG" /> </imageobject>
+	  			<textobject> <phrase>&appconfig; device ID conflict</phrase> </textobject>
+	  			<caption> <para>&appconfig; device ID conflict</para> </caption>
+	  			</mediaobject>
+  			</screenshot>
+  		</section>
+  </section>
+  
+  <section id="detecting-buttons">
+  	<title>Detecting buttons</title>
+  		<para>This section describes how you can detect the buttons on your mouse.</para>
+  		<para>You must detect your mouse buttons with the button detection wizard in order to
+  		define functionality for them.</para>
+  		
+  		<section>
+	  		<title>Quick guide:</title>
+	  		<para>
+	  		<orderedlist>
+	  			<listitem><para>Press the <guibutton>Press to start button detection</guibutton> button.</para></listitem>
+	  			<listitem><para>Press a single mouse button until the progress bar is full.</para></listitem>
+	  			<listitem><para>Give the button a name.</para></listitem>
+	  			<listitem><para>Press the <guibutton>Add</guibutton> button to save the button.</para></listitem>
+	  			<listitem><para>Repeat until you have detected all your buttons. </para></listitem>
+	  			<listitem><para>Press <guibutton>OK</guibutton> to finish.</para></listitem>
+	  		</orderedlist>
+	  		</para>
+	  	</section>
+  		
+  		<section>
+	  		<title>In depth guide:</title>
+	  		<para>
+	  		To start the button detection, press the <guibutton>Press to start button detection</guibutton> button.
+	  		Now, press a single button until the detection progress bar is full. </para>
+	  		<screenshot>
+	  			<screeninfo>&appconfig; button detection in progress</screeninfo>
+	  			<mediaobject>
+	  			<imageobject> <imagedata fileref="figures/btnx-screenshot-4.png" format="PNG" /> </imageobject>
+	  			<textobject> <phrase>&appconfig; button detection in progress</phrase> </textobject>
+	  			<caption> <para>&appconfig; button detection in progress</para> </caption>
+	  			</mediaobject>
+  			</screenshot>
+	  		<para>The status should change to
+	  		<guilabel>"Button detected!"</guilabel> and the <guilabel>"Button name"</guilabel> entry should be
+	  		enabled. Enter a name for that button. It doesn't matter what you name the button. It is only for
+	  		your convenience so you can easily identify what button you are editing later.
+			</para>
+			<screenshot>
+	  			<screeninfo>&appconfig; button detection complete</screeninfo>
+	  			<mediaobject>
+	  			<imageobject> <imagedata fileref="figures/btnx-screenshot-5.png" format="PNG" /> </imageobject>
+	  			<textobject> <phrase>&appconfig; button detection complete</phrase> </textobject>
+	  			<caption> <para>&appconfig; button detection complete</para> </caption>
+	  			</mediaobject>
+  			</screenshot>
+	  		<para>
+	  		Once you have entered a name for the detected button, press <guibutton>Add</guibutton> to save that button.
+	  		You can now press <guibutton>Press to start button detection</guibutton> to detect another button. Detect
+	  		all your mouse buttons, or at least the ones you want &app; to handle.
+	  		</para>
+
+			<para>When you are done detecting your buttons, press <guibutton>OK</guibutton> to finish detection and
+			save all detection information.</para>
+			<para>You can press <guibutton>Cancel</guibutton> to undo all changes and exit the wizard.</para>
+			<para>If you ran into trouble during the button detection, refer to the 
+			<link linkend="troubleshooting">Troubleshooting section</link>.</para>
+			<para>If you get the "Button detection problem" error window as seen below, refer to the 
+			<link linkend="troubleshoot-button-detection">"Button detection	problem" </link> section in Troubleshooting.</para>
+	  		<screenshot>
+	  			<screeninfo>&appconfig; button detection problem</screeninfo>
+	  			<mediaobject>
+	  			<imageobject> <imagedata fileref="figures/btnx-screenshot-9.png" format="PNG" /> </imageobject>
+	  			<textobject> <phrase>&appconfig; button detection problem</phrase> </textobject>
+	  			<caption> <para>&appconfig; button detection problem</para> </caption>
+	  			</mediaobject>
+  			</screenshot>
+		</section>
+  </section>
+  
+  <section id="managing-configurations">
+  	<title>Managing configurations</title>
+  	<para>&appconfig;-0.4.0 introduced support for multiple configurations. This means you can create many
+  	different configurations for your buttons, and switch between them with the press of a mouse button.
+  	You can also backup and restore your configurations.
+  	The screenshot below shows &appconfig;'s Configuration Manager tab with a few defined configurations.
+  	</para>
+  	
+  	<screenshot>
+		<screeninfo>&appconfig;'s Configuration Manager</screeninfo>
+		<mediaobject>
+		<imageobject> <imagedata fileref="figures/btnx-screenshot-11.png" format="PNG" /> </imageobject>
+		<textobject> <phrase>&appconfig;'s Configuration Manager</phrase> </textobject>
+		<caption> <para>&appconfig;'s Configuration Manager</para> </caption>
+		</mediaobject>
+	</screenshot>
+  
+  	<section>
+  		<title>Manage configurations</title>
+		<para>The left half of the screen is for managing configurations. The list shows all the configurations, their
+		priorities, and which one is open. The '*' in the <guilabel>Open</guilabel> column specifies which configuration
+		is currently open and being edited. You can open a configuration from the list by double clicking it.
+		The priority numbers are for ordering the configurations. The configuration with
+		priority 1 will start by default when &app; is launched. The order of the configurations will be significant if you
+		bind a button to switch to a next or previous configuration.</para>
+		<para>Below is a list of the configuration manager buttons and their functionalities:
+	  	<variablelist>
+		<varlistentry>
+			<term><guibutton>New</guibutton></term>
+			<listitem>
+			<para>This button creates a new configuration. If you have a previous configuration open, &appconfig; will
+			prompt you whether you would like to copy the current configuration into the new one. If you select
+			<guibutton>No</guibutton>, a new empty configuration will be created. If you select
+			<guibutton>Yes</guibutton>, all values from the current configuration will be copied into the new one, including
+			the detected mouse, it's buttons and their settings, and revoco settings.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guibutton>Delete</guibutton></term>
+			<listitem>
+			<para>This button deletes the selected configuration.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guibutton>Up</guibutton></term>
+			<listitem>
+			<para>This button moves the selected configuration up in the list and increases its priority.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guibutton>Down</guibutton></term>
+			<listitem>
+			<para>This button moves the selected configuration down in the list and decreases its priority.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guibutton>Backup</guibutton></term>
+			<listitem>
+			<para>This button backs up all the btnx configuration data and settings. It will prompt you for a location
+			and filename where to store the backup archive. You can choose any name and extension.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guibutton>Restore</guibutton></term>
+			<listitem>
+			<para>This button restore all the btnx configuration data and settings from a backup archive. 
+			It will prompt you for the location and filename of the backup file. Note that it will delete all
+			current configurations.</para>
+			</listitem>
+		</varlistentry>
+		</variablelist>
+		</para>
+	</section>
+	
+	<section>
+		<title>Current configuration</title>
+		<para>The right half of the screen is for managing to currently open configuration. Here you can edit the
+		current configuration name, detect the mouse and its buttons, and restart &app;. Note that pressing the
+		<guibutton>Restart btnx</guibutton> button restarts &app; with the currently open configuration.</para>
+		
+		<section>
+	  		<title>Mouse properties</title>
+	  		<para>For more detailed information on mouse properties, see the 
+	  		<link linkend="property-reference">"Property reference"</link> section.
+	  		</para>
+	  		<para>The mouse properties section contains some information about your mouse. 
+	  		The <link linkend="vendor-id-property"><guilabel>Vendor</guilabel></link> and 
+	  		<link linkend="product-id-property"><guilabel>Product ID</guilabel></link>s
+	  		should have been set to some hexadecimal value other than 0x0000 after the mouse detection. 
+	  		The <link linkend="vendor-property"><guilabel>Vendor</guilabel></link> and 
+	  		<link linkend="product-property"><guilabel>Product</guilabel></link>
+	  		text entries are optional. You can fill them with the manufacturer name, ex. Logitech, and product name, ex. MX
+	  		Revolution. These don't affect functionality, but could be implemented in future versions of &app; when it will
+	  		possibly handle multiple input devices.</para>
+	  	</section>
+	  </section>
+  
+  </section>
+  
+  <section id="configuring-buttons">
+  	<title>Configuring buttons</title>
+  	<para>This section describes how to configure the buttons detected by &appconfig;. You must first detect
+  	your mouse and buttons before configuring them. See the sections <link linkend="detecting-mouse">"Detecting the mouse"</link>
+  	and <link linkend="detecting-buttons">"Detecting buttons"</link>.
+  	The screenshot below shows &appconfig; with a configured mouse and buttons.</para>
+  	
+  	<screenshot>
+		<screeninfo>&appconfig; configured buttons</screeninfo>
+		<mediaobject>
+		<imageobject> <imagedata fileref="figures/btnx-screenshot-6.png" format="PNG" /> </imageobject>
+		<textobject> <phrase>&appconfig; configured buttons</phrase> </textobject>
+		<caption> <para>&appconfig; with configured buttons</para> </caption>
+		</mediaobject>
+	</screenshot>
+  	
+  	<para>The list on the left side of the &appconfig; window contains all the buttons that have been detected. You
+  	can choose a button to edit by pressing on its name in the list. If you double click on the name, the button
+  	will be expanded, and its properties will be visible on the list.</para>
+  	<!--<para>The <guibutton>Save</guibutton> saves the &app;-configuration to to a file, located in <filename>/etc/btnx/btnx_config</filename>.
+  	It also enables hot-plugging by creating a udev rule in <filename>/etc/udev/rules.d/99-btnx.rules</filename>.</para>-->
+  	<!--<para>The <guibutton>Restart btnx</guibutton> saves your configuration, enables hot plugging, and restarts &app;,
+  	The changes in the configuration take effect immediately.</para>-->
+  	
+  	<section>
+  		<title>Button properties</title>
+  		<para>For more detailed information on button properties, see the 
+  		<link linkend="property-reference">"Property reference"</link> section.
+  		</para>
+  		<para>First, make sure to check the <link linkend="enabled-property"><guilabel>Enabled</guilabel></link>
+  		check-box if you want &app; to handle that button.
+  		If you don't enable a button, &app; will do nothing when you press it.</para>
+  		<para>The <link linkend="name-property"><guilabel>Name</guilabel></link> field is set to whatever you named that 
+  		button during button detection. You can	rename it if you want.</para>
+  		<para>The <link linkend="event-type-property"><guilabel>Event type</guilabel></link> field is set to either 
+  		"Keyboard combination", "Configuration switch", or "Command execution", depending on what you want that button to do.</para>
+  		<para>You can set <link linkend="repeat-delay-property"><guilabel>Repeat delay</guilabel></link> to a value greater than
+  		zero if you want &app; to block additional clicks from that button within a certain time frame.</para>
+  		<para>You can enable the <link linkend="force-release-property"><guilabel>Force immediate button release</guilabel></link>
+  		setting if you want &app; to release the button immediately after pressing it. This means you will not be able to
+  		hold the button down, but it will help if your button seems to get stuck down occasionally.</para>
+  		<para>If you set the <link linkend="event-type-property"><guilabel>Event type</guilabel></link> to 
+  		"Keyboard combination", you have to choose at least a
+  		<link linkend="keycode-property"><guilabel>Keycode</guilabel></link> value for that button. This is the key that is 
+  		sent by &app; when you press that mouse button. You can also define up to three modifier keys for that keycode, 
+  		so you can send combinations like Ctrl+Alt+Left.</para>
+  		<para>If you set the <link linkend="event-type-property"><guilabel>Event type</guilabel></link> to 
+  		"Configuration switch", you have to choose how the switch is made. You can either switch to a next, previous, or
+  		specific configuration when pressing the button.</para>
+  		<para>If you set the <link linkend="event-type-property"><guilabel>Event type</guilabel></link> to 
+  		"Command execution", you have to fill in the
+  		<link linkend="execute-command-property"><guilabel>Execute command</guilabel></link> field with the shell command that 
+  		you want to send. You also have
+  		to set the <link linkend="process-uid-property"><guilabel>Process UID</guilabel></link> to a valid UID (User Identification), 
+  		preferably your own.
+  		The UID determines what user executes the command, and what privileges the subsequent process has.
+  		If you leave it to zero, the commands will be executed as <emphasis>ROOT</emphasis>.</para>
+  		<para>You can delete a button by pressing <guibutton>Delete</guibutton>. You will need to detect it again
+  		if you want to use the button after deleting it.</para>
+  		<screenshot>
+			<screeninfo>&appconfig; command execution configuration</screeninfo>
+			<mediaobject>
+			<imageobject> <imagedata fileref="figures/btnx-screenshot-7.png" format="PNG" /> </imageobject>
+			<textobject> <phrase>&appconfig; command execution configuration</phrase> </textobject>
+			<caption> <para>&appconfig; command execution configuration</para> </caption>
+			</mediaobject>
+		</screenshot>
+  	</section>
+  	
+  </section>
+  
+  <section id="configuring-revoco">
+  	<title>Configuring revoco</title>
+  	<para>This section describes the possible settings for revoco. revoco is a program written by
+  	Edgar Toernig's bonobo that allows MX Revolution mouse users change their mouse wheel behavior.
+  	The settings are disabled if an MX Revolution mouse has not been detected by &appconfig;.
+  	The screenshot below shows &appconfig; with the revoco settings tab open.</para>
+  	
+  	<screenshot>
+		<screeninfo>&appconfig; revoco settings</screeninfo>
+		<mediaobject>
+		<imageobject> <imagedata fileref="figures/btnx-screenshot-10.png" format="PNG" /> </imageobject>
+		<textobject> <phrase>&appconfig; revoco settings</phrase> </textobject>
+		<caption> <para>&appconfig; revoco settings</para> </caption>
+		</mediaobject>
+	</screenshot>
+  	
+  	<para>To enable revoco, you must check the <guibutton>Enable revoco</guibutton> checkbox. The possible settings
+  	are listed and described below:</para>
+  	
+  	<para>
+  		<variablelist>
+  		<varlistentry>
+  			<term><anchor id="revoco-free"/><property>Free-scroll mode</property></term>
+  			<listitem>
+  			<para>This mode places the mouse wheel in permanent free-scroll, where the mouse wheel rotates
+  			frictionlessly. This also allows you to use the mouse wheel-press as a button. It's also possible
+  			to detect the button with &appconfig; and bind it to other key combinations.</para>
+  			</listitem>
+  		</varlistentry>
+  		<varlistentry>
+  			<term><anchor id="revoco-click"/><property>Click-to-click mode</property></term>
+  			<listitem>
+  			<para>This mode places the mouse wheel in permanent click-to-click mode, where the mouse wheel rotates
+  			like normal mouse wheels. This also allows you to use the mouse wheel-press as a button. It's also possible
+  			to detect the button with &appconfig; and bind it to other key combinations.</para>
+  			</listitem>
+  		</varlistentry>
+  		<varlistentry>
+  			<term><anchor id="revoco-manual"/><property>Manual mode</property></term>
+  			<listitem>
+  			<para>This mode allows you to change between the free and click-to-click mode with different mouse buttons.
+  			You must enter the number of the button into the <guilabel>Button number</guilabel> entry. The default is
+  			3, which is the mouse wheel-press button. This is also the default mode of the MX Revolution mouse.
+  			The button numbers and their names are listed below (buttons 1 and 2 cannot be used):
+  			<itemizedlist>
+  				<listitem><para>3 - middle (wheel) button</para></listitem>
+  				<listitem><para>4 - rear thumb button</para></listitem>
+  				<listitem><para>5 - front thumb button</para></listitem>
+  				<listitem><para>6 - find button</para></listitem>
+  				<listitem><para>7 - wheel left tilt</para></listitem>
+  				<listitem><para>8 - wheel right tilt</para></listitem>
+  				<listitem><para>9 - side wheel forward</para></listitem>
+  				<listitem><para>11 - side wheel backward</para></listitem>
+  				<listitem><para>13 - side wheel press</para></listitem>
+  			</itemizedlist>
+  			</para>
+  			</listitem>
+  		</varlistentry>
+  		<varlistentry>
+  			<term><anchor id="revoco-auto"/><property>Automatic mode</property></term>
+  			<listitem>
+  			<para>This mode automatically changes the scrolling from click-to-click to free-scrolling when you spin the mouse
+  			wheel above a certain threshold. It also changes back to click-to-click when you spin the mouse wheel at a speed
+  			less than the threshold. Enter the value of the threshold into the <guilabel>Up scroll speed</guilabel> and
+  			<guilabel>Down scroll speed</guilabel>. They set the thresholds for up and down scrolling directions separately.</para>
+  			</listitem>
+  		</varlistentry>
+  		</variablelist>
+  		</para>
+  	
+  	<para>You can press the <guibutton>Restart btnx</guibutton> button to see the changes immediately.</para>
+  </section>
+  
+  <section id="property-reference">
+  	<title>Property reference</title>
+  	<para>This section gives more detailed information about the configuration properties you can set in &appconfig;.</para>
+  	
+  	<section id="mouse-properties">
+  		<title>Mouse properties</title>
+  		<para>
+  		<variablelist>
+  		<varlistentry>
+  			<term><anchor id="vendor-property"/><property>Vendor</property></term>
+  			<listitem>
+  			<para><emphasis>Optional.</emphasis> The name of the manufacturer of the mouse.</para>
+  			</listitem>
+  		</varlistentry>
+  		<varlistentry>
+  			<term><anchor id="product-property"/><property>Product</property></term>
+  			<listitem>
+  			<para><emphasis>Optional.</emphasis> The model name of the mouse.</para>
+  			</listitem>
+  		</varlistentry>
+  		<varlistentry>
+  			<term><anchor id="vendor-id-property"/><property>Vendor ID</property></term>
+  			<listitem>
+  			<para><emphasis>Uneditable.</emphasis> A 16-bit hexadecimal value, identifying the manufacturer of your
+  			mouse. This is set automatically when detecting your mouse with &appconfig;.</para>
+  			</listitem>
+  		</varlistentry>
+  		<varlistentry>
+  			<term><anchor id="product-id-property"/><property>Product ID</property></term>
+  			<listitem>
+  			<para><emphasis>Uneditable.</emphasis> A 16-bit hexadecimal value, identifying the model type of your
+  			mouse. This is set automatically when detecting your mouse with &appconfig;.</para>
+  			</listitem>
+  		</varlistentry>
+  		</variablelist>
+  		</para>
+  	</section>
+  	
+  	<section id="button-properties">
+  		<title>Button properties</title>
+  		<para></para>
+  		
+  		<section id="general-properties">
+  			<title>General</title>
+	  		<para>
+	  		<variablelist>
+	  		<varlistentry>
+	  			<term><anchor id="enabled-property"/><property>Enabled</property></term>
+	  			<listitem>
+	  			<para>If the <guilabel>Enabled</guilabel> check-box is checked, &app; will generate the event you define when
+	  			pressing that button. &app; will ignore that button if you leave it unchecked and will do nothing when you
+	  			press the button. Always check this value first if a button isn't working.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="name-property"/><property>Name</property></term>
+	  			<listitem>
+	  			<para><emphasis>Required.</emphasis> This is the name of the button. You need to set it to something. It doesn't
+	  			matter what you name your buttons, but you should give it an easily recognizable name so you know what button
+	  			you are editing.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>	
+	  			<term><anchor id="event-type-property"/><property>Event type</property></term>
+	  			<listitem>
+	  			<para><emphasis>Required.</emphasis> This is the type of event sent by &app; when pressing a button. You can
+	  			define two different types of events.
+	  			<variablelist>
+	  			<varlistentry>
+	  				<term><property>Key combination</property></term>
+	  				<listitem>
+	  				<para>Sends a key combination. A key combination can be a keyboard or mouse button combined with up to
+	  				three different modifier keys.</para>
+	  				</listitem>
+	  			</varlistentry>
+	  			<varlistentry>
+	  				<term><property>Command execution</property></term>
+	  				<listitem>
+	  				<para>Executes a shell command. You can execute any binary or script file that has execution privileges.
+	  				You must define a UID for the command.</para>
+	  				</listitem>
+	  			</varlistentry>
+	  			</variablelist>
+	  			</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="repeat-delay-property"/><property>Repeat delay</property></term>
+	  			<listitem>
+	  			<para><emphasis>Required.</emphasis> This is the amount of delay, in milliseconds (1/1000 of a second), that
+	  			must pass before &app; will allow the button to send another event. This is especially useful for mice that have
+	  			very sensitive buttons and easily send multiple clicks at once.</para>
+	  			<para>You can leave this field to 0 milliseconds if your button isn't too sensitive.</para>
+	  			<para>Recommended values for sensitive buttons is 200-400 milliseconds, depending on your needs.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="force-release-property"/><property>Force immediate button release</property></term>
+	  			<listitem>
+	  			<para><emphasis>Optional.</emphasis> Enabling this property will force &app; to release the button
+	  			as soon as it's pressed. This means you will not be able to hold down the button.</para>
+	  			<para>Use this option if your button seems to get stuck down until you press it again.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		</variablelist>
+	  		</para>
+	  	</section>
+	  	
+	  	<section id="keycombo-properties">
+	  		<title>Key combination</title>
+	  		<para>
+	  		<variablelist>
+	  		<varlistentry>
+	  			<term><anchor id="keycode-property"/><property>Keycode</property></term>
+	  			<listitem>
+	  			<para><emphasis>Required.</emphasis> This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Key combination".</para>
+	  			<para>This is the key or mouse button that is sent by &app; when you press the mouse button. The list of keycodes
+	  			is huge, and not all might be handled by your window manager.</para>
+	  			<tip><para>The keycodes starting with <keysym>KEY_</keysym> are keyboard keys.
+	  			The keycodes starting with <keysym>BTN_</keysym> are mouse buttons.</para></tip>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="modifier-key-property"/><property>Modifier key 1-3</property></term>
+	  			<listitem>
+	  			<para><emphasis>Optional.</emphasis> This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Key combination".</para>
+	  			<para>You can define up to three modifier keys to accompany a keycode, or none at
+	  			all. Modifier keys are buttons such as Ctrl, Alt, Shift, etc. This allows you to send keyboard combinations such
+	  			as Ctrl+Alt+Left.</para>
+	  			<tip><para><keysym>KEY_LEFTMETA</keysym> is the <keycap>Start</keycap> start key. KEY_RIGHTMETA is the
+	  			<keycap>Menu</keycap> key.</para></tip>
+	  			</listitem>
+	  		</varlistentry>
+	  		</variablelist>
+	  		</para>
+	  	</section>
+	  	
+	  	<section id="config-switch-properties">
+	  		<title>Configuration switch</title>
+	  		<para>
+	  		<variablelist>
+	  		<varlistentry>
+	  			<term><anchor id="next-config-property"/><property>Next config.</property></term>
+	  			<listitem>
+	  			<para>This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Configuration switch".</para>
+	  			<para>This option makes &app; switch to the next configuration in the Configuration
+	  			Manager list when the selected button is pressed. If the current configuration is the last one,
+	  			&app; will switch to the first configuration.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="prev-config-property"/><property>Prev config.</property></term>
+	  			<listitem>
+	  			<para>This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Configuration switch".</para>
+	  			<para>This option makes &app; switch to the previous configuration in the Configuration
+	  			Manager list when the selected button is pressed. If the current configuration is the first one,
+	  			&app; will switch to the last configuration.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="switch-to-config-property"/><property>Switch to</property></term>
+	  			<listitem>
+	  			<para>This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Configuration switch".</para>
+	  			<para>This option makes &app; switch to the configuration selected in the drop-down box
+	  			next to this radio button.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		</variablelist>
+	  		</para>
+	  	</section>
+	  	
+	  	<section id="execute-properties">
+	  		<title>Command execution</title>
+	  		<para>
+	  		<variablelist>
+	  		<varlistentry>
+	  			<term><anchor id="execute-command-property"/><property>Execute command</property></term>
+	  			<listitem>
+	  			<para><emphasis>Required.</emphasis> This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Command execution".</para>
+	  			<para>This is the shell command to execute when you press the mouse button. You must first specify the
+	  			<emphasis>full path</emphasis> of the file to execute, followed by any number of arguments.</para>
+	  			<informalexample>
+	  			<para>Example: open the &app; configuration file in gedit.</para>
+	  			<para><command>/usr/bin/gedit --new-window /etc/btnx/btnx_config</command></para>
+	  			</informalexample>
+	  			</listitem>
+	  		</varlistentry>
+	  		<varlistentry>
+	  			<term><anchor id="process-uid-property"/><property>Process UID</property></term>
+	  			<listitem>
+	  			<para><emphasis>Required.</emphasis> This property can only be set if the <guilabel>Event type</guilabel> is set
+	  			to "Command execution".</para>
+	  			<para>This is the <acronym>UID</acronym> (User Identification) of the user that executes the command. You should
+	  			set this to your own UID.</para>
+	  			<warning><para>If you leave <acronym>UID</acronym> to zero, the process will run as ROOT. This could do damage to your
+	  			system. Use root privileges <emphasis>only</emphasis> if you really need to. Then, ask yourself once more why
+	  			you need to run as root.</para></warning>
+	  			</listitem>
+	  		</varlistentry>
+	  		</variablelist>
+	  		</para>
+	  	</section>
+	  	
+	  	<section id="other-properties">
+	  		<title>Other properties</title>
+	  		<para>
+	  		<variablelist>
+	  		<varlistentry>
+	  			<term><anchor id="rawcode-property"/><property>Rawcode</property></term>
+	  			<listitem>
+	  			<para><emphasis>Uneditable.</emphasis> This property is not visible in the button property frame, and can only
+	  			be seen during a button detection conflict or in the button list.</para>
+	  			<para>Rawcode is a 32-bit hexadecimal value that is sniffed from an input device event handler stream. It
+	  			distinguishes the different buttons. It is automatically bound to a button during button detection and
+	  			cannot be changed. You will manually have to choose a rawcode to bind to a button during a button
+	  			detection problem.</para>
+	  			</listitem>
+	  		</varlistentry>
+	  		</variablelist>
+	  		</para>
+	  	</section>
+  	</section>
+  </section>
+  
+  <section id="advanced-settings">
+  	<title>Advanced settings</title>
+  	
+  	<para>This section describes the advanced settings in &appconfig;.</para>
+  	
+  	<para>
+  	<variablelist>
+	<varlistentry>
+		<term><anchor id="enable-hotplugging"/><property>Enable hot-plugging</property></term>
+		<listitem>
+		<para>This enables hot-plugging for &app;. This means, that when you plug in your mouse
+		while your system is running, btnx starts automatically. This is done by an udev rule. It also
+		starts &app; automatically when you wake up the system from standby. It is recommended that laptop
+		users use this option because &app; quits everytime you put your computer to standby or unplug
+		the mouse.</para>
+		</listitem>
+	</varlistentry>
+	<varlistentry>
+		<term><anchor id="sysfs-setting"/><property>WAIT_FOR_SYSFS udev option</property></term>
+		<listitem>
+		<para>This adds the WAIT_FOR_SYSFS option to the udev rule generated by the <guilabel>Enable
+		hot-plugging</guilabel> setting. Try it if you have trouble with hot-plugging. However,
+		it usually creates more problems than it solves.</para>
+		</listitem>
+	</varlistentry>
+	</variablelist>
+	</para>
+	
+  </section>
+  
+  <section id="troubleshooting">
+  	<title>Troubleshooting</title>
+  	
+  	<para>This section contains useful tips to troubleshoot &app; problems.</para>
+  	<para>Usually, previous hacks at the input interface to get a mouse working causes problems for &app;.
+  	You should revert all those changes if you experience problems with &app;. If you have trouble remembering
+  	what you changed, this section provides some good default values that might work for you.</para>
+  	
+  	<section>
+	  	<title>&app; specific problems</title>
+	  	<para></para>
+	  	<qandaset defaultlabel='number'>
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-extra-events"/>
+	  			<para><emphasis>The mouse sends extra events events when pressing a button.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>If you are getting multiple and <emphasis>identical</emphasis> events during one button press, check
+	  			<link linkend="troubleshoot-delay">this section</link> first. The list below gives some possible reasons and solutions to the problem.
+	  			<orderedlist>
+	  			<listitem>
+	  				<para>The button could already be recognized and handled by X. You can confirm this by running xev
+	  				(<link linkend="troubleshoot-run-xev">see "Running xev"</link>) without
+	  				&app;. A possible solution is to edit your &xorg; file's mouse InputSection. Refer to this 
+	  				<link linkend="troubleshoot-xorg">section</link> for a working &xorg; InputSection.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>If you are using a mouse that has Cruise Control or Smart Scroll functionality, lomoco might help. See the
+	  				troubleshooting section on <link linkend="troubleshoot-install-lomoco">lomoco</link>.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>Remove any custom udev rules that you have made for the mouse.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>If the solutions above didn't work, you could try using xmodmap to map the buttons to harmless button numbers.
+	  				First, use xev (<link linkend="troubleshoot-run-xev">see "Running xev"</link>) to find 
+	  				out what extra mouse button number is sent. Then, use xmodmap (<link linkend="troubleshoot-xmodmap">see "xmodmap"</link>) to change the number
+	  				to a higher one. The higher button numbers usually aren't handled by window managers, so nothing extra happens when
+	  				they are called.</para>
+	  			</listitem>
+	  			</orderedlist>
+	  			</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-button-recognition"/>
+	  			<para><emphasis>&app; doesn't recognize all my buttons.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>A couple of possible solutions:
+	  			<orderedlist>
+	  			<listitem>
+	  				<para>Make sure your mouse is recognized as a USB input device. See <link linkend="troubleshoot-check-usb">this part</link>
+	  				for more info.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>Remove any custom udev rules that you have made for the mouse.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>It's possible that some buttons use a different event handler than the mouse itself. 
+	  				You must press each button on your mouse during mouse detection to ensure that all event handlers have been
+	  				detected.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>You might have incompatible settings in your &xorg; file (<link linkend="troubleshoot-xorg">see &xorg; section</link>). If you are using the evdev driver, you are certain to run into problems.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>If you have mouseemu installed, try removing it.</para>
+	  			</listitem>
+	  			</orderedlist>
+	  			</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-id-conflict"/>
+	  			<para><emphasis>Mouse detection gives me a "Device ID conflict detected" error.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>This error means that mouse detection detected more than one input device. &app; only supports
+	  			a single input device at a time, currently. &appconfig; uses Vendor and Product IDs to identify
+	  			different input devices.</para>
+	  			<para>Make sure you only use your mouse during mouse detection. Do not press any keyboard buttons. If you
+	  			have multiple mice, only move the one that you want detected. Do not interact with any other possible
+	  			input devices.</para>
+	  			<para>If your mouse has multiple event handlers and each uses a different set of Vendor and Product IDs,
+	  			then &app; cannot help you. If the problem happens when you press a certain button, then leave that button
+	  			alone and do not use it with &app;.</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-button-detection"/>
+	  			<para><emphasis>Button detection gives me a "Button detection problem" error.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>There are a couple of possible solutions.
+	  			<orderedlist>
+	  			<listitem>
+	  				<para>You pressed multiple buttons during button detection. Close the error window by pressing
+	  				<guibutton>Cancel</guibutton> and try again. Only press a single button repeatedly during detection.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>You tried to detect a previously detected button. The "Already assigned" column is set to "Yes"
+	  				for that button in the error window. Close the error window by pressing
+	  				<guibutton>Cancel</guibutton> and try a different button next time.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>Your button sends multiple events when pressing it. This true for mice with SmartScroll or Cruise Control and
+	  				lomoco can fix the problem (<link linkend="troubleshoot-install-lomoco">see "Installing lomoco"</link>). 
+	  				If you don't want to use lomoco, or lomoco won't help with your mouse, use the following steps:</para>
+	  				<para>
+	  				<orderedlist>
+	  				<listitem>
+	  					<para>Bind the button to a certain rawcode suggested by the error window by selecting a row. You should choose the one with the
+	  					most <guilabel>Clicks</guilabel>. You can only use entries which have their <guilabel>Already assigned</guilabel>
+	  					field set to <guilabel>No</guilabel>. If it's set to
+	  					<guilabel>Yes</guilabel>, the rawcode has already been detected and bound to a certain button.</para>
+	  				</listitem>
+	  				<listitem>
+	  					<para>Click <guibutton>OK</guibutton> to confirm the selection and close the window.</para>
+	  				</listitem>
+	  				<listitem>
+	  					<para>Configure and test the button.</para>
+	  				</listitem>
+	  				<listitem>
+	  					<para>If the button doesn't behave correctly, use the <guibutton>Delete</guibutton> button in the button configuration
+	  					window to remove the button. Then, detect the button again and try binding it to a different rawcode. Rinse and repeat.</para>
+	  				</listitem>
+	  				</orderedlist>
+					</para>
+	  			</listitem>
+	  			</orderedlist>
+	  			</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-no-response"/>
+	  			<para><emphasis>I've configured my mouse. Nothing is happening.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>
+	  			<orderedlist>
+	  			<listitem>
+	  				<para>Make sure you have checked the <link linkend="enabled-property"><guilabel>Enabled</guilabel></link>
+	  				check-box in &appconfig; for every button that you want &app; to handle.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>Make sure you have restarted &app; after making any changes to the configuration file.
+	  				Either press the <guibutton>Restart btnx</guibutton> in &appconfig; or run the following
+	  				command in your terminal:
+<screen>
+<prompt>$</prompt> <command>sudo /etc/init.d/btnx restart</command>
+</screen>
+					</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>It could be a problem with the &app; executable. First, stop &app; from command line and
+	  				run it from the command line to see its output. Look for any errors.
+<screen>
+<prompt>$</prompt> <command>sudo /etc/init.d/btnx stop</command>
+<prompt>$</prompt> <command>sudo btnx</command>
+</screen>	
+	  				</para>
+	  			</listitem>
+	  			</orderedlist>
+	  			</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-delay"/>
+	  			<para><emphasis>The same event happens multiple times when pressing a button.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>Try enabling the <link linkend="force-release-property">Force immediate button release</link>
+	  			setting in the <guilabel>General</guilabel> button properties group.</para>
+	  			<para>This could also be a sensitivity problem with your mouse, or not. In any case, you should increase the
+	  			delay value for that button in &appconfig; (<link linkend="repeat-delay-property">see Delay property</link>).
+	  			This will prevent the button from sending multiple events in a certain time frame.</para>
+	  			<para>Also, make sure only one &app; process is running at a time.</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-upgrade"/>
+	  			<para><emphasis>&app; doesn't work after upgrading.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>If you are upgrading from &app;-0.2.x, make sure you uninstall it first before installing
+	  			the new version of &app;. Also, make sure you are not using the old (pre 0.3.0) configuration files. They no
+	  			longer work.</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-hot-plugging"/>
+	  			<para><emphasis>&app; doesn't work after plugging in a mouse of after standby.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>Make sure you have enabled hot-plugging in the <guilabel>Advanced settings</guilabel>
+	  			(see <link linkend="enable-hotplugging">Enable hot-plugging</link>). It is possible that
+	  			&app; will not start correctly after standby if you have the <guilabel>WAIT_FOR_SYSFS</guilabel> setting enabled.</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-boot-hang"/>
+	  			<para><emphasis>Booting hangs for a minute or two after installing &app;.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>Disable the <guilabel>WAIT_FOR_SYSFS</guilabel> setting. If you do not need hot-plugging,
+	  			you can also disable that setting.
+	  			(see <link linkend="enable-hotplugging">Enable hot-plugging</link>)</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	</qandaset>
+  	</section>
+  	
+  	<section>
+	  	<title>External programs and settings</title>
+	  	<qandaset defaultlabel="number">
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-xorg"/>
+	  			<para><emphasis>A working &xorg; <computeroutput>InputSection</computeroutput>.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>Most problems with &app; arise from different &xorg;
+	  			<computeroutput>InputSection</computeroutput> settings. You want <application>xserver</application>
+	  			to handle as little from the mouse as possible, the most fundamental behavior aside. In essence, you want to
+	  			downgrade your <application>xserver</application> functionality in connection to the mouse. This is sometimes necessary,
+	  			because &app; cannot stop <application>xserver</application> from handling mouse button events if it wishes to do so. 
+	  			You will then get multiple events, often with <application>xserver</application> doing what you don't want.</para>
+	  			<para>Most user's have found that changing the Driver, Protocol, and Device options to the reference values below
+	  			has fixed their problems. Most importantly, make sure you are not using the evdev driver.</para>
+	  			<para>
+	  			<warning><para>Laptop users should not edit their Synaptics touchpad settings.</para></warning>
+	  			<warning><para>Do not blindly copy the example below. Changing the <computeroutput>Identifier</computeroutput> in
+	  			your &xorg; might lead to an <application>xserver</application> startup failure.</para></warning>
+	  			<warning><para>Make sure you know how to edit the &xorg; file.
+	  			Make a backup of it before editing. You should know how to recover the backup file and restart
+	  			from the command line in case you run into trouble.</para></warning>
+	  			</para>
+	  			<para>Below is a working &xorg; <computeroutput>InputSection</computeroutput>. Try to make
+	  			yours look like it as much as possible, but don't change the <computeroutput>Identifier value</computeroutput>.
+<screen>
+<computeroutput>Section "InputDevice"
+    Identifier     "Mouse0"
+    Driver         "mouse"
+    Option         "Protocol"        "auto"
+    Option         "Device"          "/dev/psaux"
+    Option         "ZAxisMapping"    "4 5"
+EndSection
+</computeroutput>
+</screen>
+	  			</para>
+	  			<para>You may also try to use <filename>/dev/input/mice</filename> for the Device option.</para>
+	  			<para>You can edit your <filename>/etc/X11/xorg.conf</filename> by running the following command:
+<screen>
+<prompt>$</prompt> <command>sudo gedit /etc/X11/xorg.conf</command>
+</screen>
+				Save all your work and press <keycap>Ctrl</keycap>+<keycap>Alt</keycap>+<keycap>Backspace</keycap>
+				to restart X. This will close your programs and your desktop!</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-run-xev"/>
+	  			<para><emphasis>Running xev</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>Install xev if you don't have it. Run xev by typing
+<screen>
+<prompt>$</prompt> <command>xev</command>
+</screen>
+				Then, press the button which is giving you problems. For example, pressing the left mouse button
+				outputs something like the following:
+<screen>
+<computeroutput>ButtonPress event, serial 29, synthetic NO, window 0x5000001,
+root 0x137, subw 0x0, time 1050685211, (163,11), root:(173,108),
+state 0x10, button 1, same_screen YES</computeroutput>
+</screen>
+				Note the button number, <computeroutput>button 1</computeroutput>, reported by xev. The number
+				will depend on the button you press.</para>
+				<para>You can also use xev to check whether &app; is sending the
+				correct keys when pressing a mouse button. In this case, look for a <computeroutput>keysym</computeroutput>
+				value.
+				</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-xmodmap"/>
+	  			<para><emphasis>xmodmap</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>xmodmap can be used to change the behavior of a button in X. This is sometimes useful for
+	  			buttons that are interpreted by xserver and sending an event. A common problem is that a button
+	  			also sends a right click, opening up a menu.</para>
+	  			<para>Use xev (<link linkend="troubleshoot-run-xev">see "Running xev"</link>) to find out what button 
+	  			number is being sent. Now, bind that button number to a higher
+	  			one, one that is not handled by your window manager. Let's say a certain mouse button also sends a button
+	  			number 6. The following shell command tells X to send a button 9 when it wants to send a button 6 event.
+<screen>
+<prompt>$</prompt> <command>xmodmap -e "pointer = 1 2 3 4 5 9 7 8 6"</command>
+</screen>
+				Note, that 6 and 9 have changed places. If that doesn't work, try switching to another number, like 8 or 7.
+				Now, add the line that worked for you in your ~/.Xmodmap file. Using the previous example, you would add
+				the following:
+<screen>
+<computeroutput>pointer = 1 2 3 4 5 9 7 8 6</computeroutput>
+</screen>
+	  			This will make the change persist on reboots.</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-install-lomoco"/>
+	  			<para><emphasis>Installing lomoco</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>lomoco is useful if your mouse wheel sends extra button events when scrolling. Another problem is
+	  			mice with Cruise Control. Some buttons might give multiple events when pressing them. Here are 
+	  			<personname><othername>tim71's</othername></personname> instructions for installing and using lomoco.
+	  			<orderedlist>
+	  			<listitem>
+	  				<para>Install lomoco. If your system uses Debian packages and apt-get, you can probably get it by
+	  				running
+<screen>
+<prompt>$</prompt> <command>sudo apt-get install lomoco</command>
+</screen>
+					If your system doesn't have binary packages (deb or rpm) for lomoco, you can find the sources at
+					<ulink url="http://lomoco.linux-gamers.net/">http://lomoco.linux-gamers.net/</ulink>.</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>Run the following command to disable SmartScroll/Cruise Control:
+<screen>
+<prompt>$</prompt> <command>sudo lomoco --no-sms</command>
+</screen>
+					</para>
+	  			</listitem>
+	  			<listitem>
+	  				<para>Tell your system to start lomoco during boot with the <computeroutput>--no-sms</computeroutput>.
+	  				You should consult your distro's sources of help on how to do this. However, the following should work
+	  				for most users. Add this line into your <filename>/etc/rc.local</filename> immediately before
+	  				the line "<computeroutput>exit 0</computeroutput>".
+<screen>
+<computeroutput>lomoco --no-sms</computeroutput>
+</screen>
+	  				</para>
+	  			</listitem>
+	  			</orderedlist>
+	  			</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	<qandaentry>
+	  		<question><anchor id="troubleshoot-check-usb"/>
+	  			<para><emphasis>Check that the mouse is recognized as a USB input device.</emphasis></para>
+	  		</question>
+	  		<answer>
+	  			<para>&app; might not work correctly if your mouse is not recognized as a USB input device. Make sure
+	  			you aren't using a USB->PS/2 adapter with your mouse. You can check that the mouse is reported as a
+	  			USB device with the following command:
+<screen>
+<prompt>$</prompt> <command>cat /proc/bus/input/devices</command>
+</screen>	
+  				Now, find the section that refers to your mouse. The section should look something like this:
+<screen>
+<computeroutput>I: Bus=0003 Vendor=046d Product=c51a Version=0111
+N: Name="Logitech USB Receiver"
+P: Phys=usb-0000:00:02.0-4/input0
+S: Sysfs=/class/input/input182
+H: Handlers=mouse2 ts2 event4 
+B: EV=7
+B: KEY=ffff0000 0 0 0 0 0 0 0 0
+B: REL=143
+</computeroutput>
+</screen>
+				Check that the line starting with "<computeroutput>P: Phys=</computeroutput>" contains the word
+				"<computeroutput>usb</computeroutput>". You can also check the output of that file to see if &app;
+				registered correctly as an input device. Look for a section with <computeroutput>Vendor=b216</computeroutput>.
+	  			</para>
+	  		</answer>
+	  	</qandaentry>
+	  	
+	  	</qandaset>
+  	</section>
+  	
+  	<section>
+	  	<title>Other sources of help</title>
+			<para>If you went through this troubleshooting section and didn't find a solution to your problem, you can then contact me, the
+			developer, directly. You can also post your problem or question on the &app; thread at the Ubuntu forums.
+			I try to check on it as often as I can.</para>
+			<para>Email: Olli Salonen <email>oasalonen@gmail.com</email></para>
+			<para><ulink url="http://ubuntuforums.org/showthread.php?t=455656">&app; thread (Ubuntu forums)</ulink></para>
+  	</section>
+  	
+  </section>
+  
+</article>
+
+
+
+

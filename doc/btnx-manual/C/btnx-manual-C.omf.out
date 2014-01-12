@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="no"?>
+<omf>
+  <resource>
+    <creator>
+     oasalonen@gmail.com (Olli Salonen)
+    </creator>
+    <title>
+     btnx Manual
+    </title>
+    <date>
+     2007-07-21
+    </date>
+    <version identifier="1.0" date="2007-07-21" description="First release"/>
+    <subject category="System|Other"/>
+    <description>
+      This document describes how to install, run, and use btnx and btnx-config.
+    </description>
+    <type>
+     manual
+    </type>
+    <format mime="text/xml" dtd="-//OASIS//DTD DocBook XML V4.1.2//EN"/>
+    <identifier url="file:/usr/share/btnx-config/doc/btnx-manual/C/btnx-manual.xml"/>
+    <language code="C"/>
+    <relation seriesid="917fe90e-377d-11dc-827f-cc14974fdf10"/>
+    <rights type="GNU FDL" license.version="1.2" license="http://www.gnu.org/licenses/fdl.html" holder="Olli Salonen"/>
+  </resource>
+</omf>
