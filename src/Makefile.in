@@ -244,8 +244,9 @@ udev_rules_path = @udev_rules_path@
 btnx_configdir = $(pkgdatadir)
 AM_CFLAGS = -Wall -O2 `pkg-config --cflags gtk+-2.0 libglade-2.0` -I../intl -I$(top_srcdir)/intl
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I../intl -I$(top_srcdir)/intl
-btnx_config_LDFLAGS = `pkg-config --libs gtk+-2.0 libglade-2.0` -Wl -export-dynamic -DPREFIX=$(pkgdatadir)
-btnx_config_LDADD = @LIBINTL@
+# ORIGINAL LINE: btnx_config_LDADD = `pkg-config --libs gtk+-2.0 libglade-2.0` -Wl -export-dynamic -DPREFIX=$(pkgdatadir)
+btnx_config_LDADD = `pkg-config --libs gtk+-2.0 libglade-2.0` -export-dynamic -DPREFIX=$(pkgdatadir)
+btnx_config_LDFLAGS = @LIBINTL@
 btnx_config_SOURCES = \
 	btnx_config.c \
 	widgets.c \
