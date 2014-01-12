@@ -9,8 +9,8 @@ LIBS = @LIBINTL@ @LIBS@
 
 AM_CFLAGS = -Wall -O2 `pkg-config --cflags gtk+-2.0 libglade-2.0` -I../intl -I$(top_srcdir)/intl
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I../intl -I$(top_srcdir)/intl
-btnx_config_LDFLAGS = `pkg-config --libs gtk+-2.0 libglade-2.0` -Wl -export-dynamic -DPREFIX=$(pkgdatadir)
-btnx_config_LDADD = @LIBINTL@
+btnx_config_LDADD = `pkg-config --libs gtk+-2.0 libglade-2.0` -Wl -export-dynamic -DPREFIX=$(pkgdatadir)
+btnx_config_LDFLAGS = @LIBINTL@
 
 ##btnx_config_HEADERS = \
 	
