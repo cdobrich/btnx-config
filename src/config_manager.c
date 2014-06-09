@@ -428,7 +428,14 @@ static int config_manager_read_file(void)
 	configs.name = g_strsplit(contents, CONFIG_MANAGER_FILE_DELIM, MAX_CONFIGS);
 	
 	x=0;
-	while (configs.name[x] != NULL) x++;
+	while (configs.name[x] != NULL) {
+		if (configs.name[x][0]) {
+			x++;
+		} else {
+			configs.name[x] = NULL;
+			break;
+		}
+	}
 	configs.count = x;
 	config_manager_check_files();
 	if (configs.count > 0)
