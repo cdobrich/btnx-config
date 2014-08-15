@@ -428,11 +428,11 @@ static int config_manager_read_file(void)
 	configs.name = g_strsplit(contents, CONFIG_MANAGER_FILE_DELIM, MAX_CONFIGS);
 	
 	x=0;
-	while (configs.name[x] != NULL) {
-		if (configs.name[x][0]) {
+	while (configs.name[x] != NULL) { // Get the configuration count
+		if (configs.name[x][0]) { // Ignore empty lines
 			x++;
 		} else {
-			configs.name[x] = NULL;
+			configs.name[x] = NULL; // Stop when we reach end of file
 			break;
 		}
 	}
