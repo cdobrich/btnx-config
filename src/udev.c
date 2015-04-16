@@ -18,17 +18,17 @@
 
 #define UDEV_RULE \
 "BUS==\"usb\", SYSFS{idVendor}==\"%04x\", SYSFS{idProduct}==\"%04x\", \
-ACTION==\"add\", RUN+=\"" INIT_SCRIPT_FILE " start\", WAIT_FOR_SYSFS=\"bus\""
-/* "\n\
+ACTION==\"add\", RUN+=\"" INIT_SCRIPT_FILE " start\", WAIT_FOR_SYSFS=\"bus\" \
+\n\
 BUS==\"usb\", SYSFS{idVendor}==\"%04x\", SYSFS{idProduct}==\"%04x\", \
-ACTION==\"remove\", RUN+=\"" INIT_SCRIPT_FILE " stop\""*/
+ACTION==\"remove\", RUN+=\"" INIT_SCRIPT_FILE " stop\""
 
 #define UDEV_RULE_NO_SYSFS \
 "BUS==\"usb\", SYSFS{idVendor}==\"%04x\", SYSFS{idProduct}==\"%04x\", \
-ACTION==\"add\", RUN+=\"" INIT_SCRIPT_FILE " start\""
-/* "\n\
+ACTION==\"add\", RUN+=\"" INIT_SCRIPT_FILE " start\" \
+\n\
 BUS==\"usb\", SYSFS{idVendor}==\"%04x\", SYSFS{idProduct}==\"%04x\", \
-ACTION==\"remove\", RUN+=\"" INIT_SCRIPT_FILE " stop\""*/
+ACTION==\"remove\", RUN+=\"" INIT_SCRIPT_FILE " stop\""
 
 static int udev_enabled=1;
 static int sysfs_enabled=0;
