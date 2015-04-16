@@ -5,7 +5,7 @@ btnx-config is a configuration tool for btnx (Button Extension). It allows the u
 
 Warning
 ----
-To aviod possibly problems, Configuration Names should contain no space (and probably no special symbols). The user of underscores is fine. This used to not be a problem, but recently I've noticed (in Fedora 21) btnx-config barfs if you try to feed it a file that has spaces in the name. Will look into fixing this in the long term.
+To avoid possibly problems, Configuration Names should contain no space (and probably no special symbols). The use of underscores is fine. This used to not be a problem, but recently I've noticed (in Fedora 21) btnx-config barfs if you try to feed it a file that has spaces in the name. Will look into fixing this in the long term.
 
 History
 ----
