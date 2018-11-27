@@ -3,6 +3,12 @@ btnx-config
 
 btnx-config is a configuration tool for btnx (Button Extension). It allows the user to send keyboard combinations or execute commands with mouse buttons. btnx-config provides mouse and button detection, and an easy way to configure btnx's behavior. See https://github.com/cdobrich/btnx/ for btnx.
 
+![Main window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-main-window.png)
+
+![Button detection window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-button-detection-window.png)
+
+![Button configuration window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-button-configuration-window.png)
+
 Warning
 ----
 To avoid possibly problems, Configuration Names should contain no space (and probably no special symbols). The use of underscores is fine. This used to not be a problem, but recently I've noticed (in Fedora 21) btnx-config barfs if you try to feed it a file that has spaces in the name. Will look into fixing this in the long term.
