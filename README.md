@@ -84,10 +84,6 @@ Older versions of Ubuntu can use the KDE application menu button to invoke the b
 
 When the older versions of Ubuntu Linux 16.04 LTS is no longer supported by April 2021, the KDE menu button generation will be removed.
 
-## Main Window
-
-![Main Window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-main-window.png)
-
 ## Troubleshooting
 
 If receive the following error message when trying to use the KDE application menu button to invoke the btnx-config graphical program:
