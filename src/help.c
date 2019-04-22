@@ -39,7 +39,7 @@ static void help_launch(GtkWidget *parent)
 _("Help support not compiled."),
 _("Local help is unavailable. This program was not compiled with help support. \
 Online help documentation is available at \
-<http://www.ollisalonen.com/btnx/man>. Either compile this \
+<https://github.com/cdobrich/btnx-config>. Either compile this \
 program with help support or contact the maintaner of this package."));
 }
 #endif

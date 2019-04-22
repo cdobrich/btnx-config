@@ -124,7 +124,7 @@
 </screen>		</para>
 			</listitem>
 			<listitem>
-				<para>Get the newest &app; from <ulink url="http://www.ollisalonen.com/btnx">http://www.ollisalonen.com/btnx</ulink>.</para>
+				<para>Get the newest &app; from <ulink url="https://github.com/cdobrich/btnx-config">https://github.com/cdobrich/btnx-config</ulink>.</para>
 			</listitem>
 			<listitem>
 				<para>Extract the source package.</para>
@@ -205,7 +205,7 @@
 				</para>
 			</listitem>
 			<listitem>
-				<para>Get the newest &appconfig; from <ulink url="http://www.ollisalonen.com/btnx">http://www.ollisalonen.com/btnx</ulink>.</para>
+				<para>Get the newest &appconfig; from <ulink url="https://github.com/cdobrich/btnx-config">https://github.com/cdobrich/btnx-config</ulink>.</para>
 			</listitem>
 			<listitem>
 				<para>Extract the source package.</para>
