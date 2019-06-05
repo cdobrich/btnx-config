@@ -63,7 +63,7 @@ btnx and btnx-config follow the simple GNU-Make conventions for installing, afte
 
 btnx and btnx-config follow the simple GNU-Make conventions for uninstalling:
 
-`sudo make install`
+`sudo make uninstall`
 
 Using btnx-config
 =======
