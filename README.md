@@ -1,7 +1,13 @@
 btnx-config
 ===========
 
-btnx-config is a configuration tool for btnx (Button Extension). It allows the user to send keyboard combinations or execute commands with mouse buttons. btnx-config provides mouse and button detection, and an easy way to configure btnx's behavior. See https://github.com/cdobrich/btnx/ for btnx.
+btnx-config is the configuration graphical user-interface (GUI) tool for btnx (Button Extension). It allows the user to send keyboard combinations or execute commands with mouse buttons. btnx-config provides mouse and button detection, and an easy way to configure the software's behavior. See https://github.com/cdobrich/btnx/ for information on the backend btnx.
+
+![Main window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-main-window.png)
+
+![Button detection window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-button-detection-window.png)
+
+![Button configuration window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-button-configuration-window.png)
 
 Warning
 ----
@@ -77,10 +83,6 @@ Older versions of Ubuntu can use the KDE application menu button to invoke the b
 `sudo btnx-config`
 
 When the older versions of Ubuntu Linux 16.04 LTS is no longer supported by April 2021, the KDE menu button generation will be removed.
-
-## Main Window
-
-![Main Window](https://raw.githubusercontent.com/cdobrich/btnx-config/master/doc/images/btnx-config-main-window.png)
 
 ## Troubleshooting
 
