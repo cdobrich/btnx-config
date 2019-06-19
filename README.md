@@ -39,7 +39,7 @@ To build on **Ubuntu** or **Debian**, you need the following dependencies:
 
 On most Ubuntu machines, these are available without needing additional sources being enabled on your apt-package respositories. To install these dependencies, run the following commands on the commandline:
 
-`sudo apt-get install libdaemon-dev libglade2-dev libgtk2.0-dev`
+`sudo apt install libdaemon-dev libglade2-dev libgtk2.0-dev`
 
 To build on **Fedora** or **Redhat**, you need the following dependencies:
 
