@@ -46,6 +46,10 @@ To build on **Fedora** or **Redhat**, you need the following dependencies:
 * `libdaemon-devel`
 * `libglade2-devel`
 
+To build on **Manjaro** you need the following dependencies:
+
+* `libglade`
+
 On Fedora, you may need more if you don't have GNU-Make or the C/C++ compilers (gcc/g++) installed.
 
 To install these dependencies, run the following commands on the commandline:
