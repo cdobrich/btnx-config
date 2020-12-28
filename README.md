@@ -34,7 +34,7 @@ To build on **Ubuntu** or **Debian**, you need the following dependencies:
 
 * `build-essential`
 * `libdaemon-dev`
-* `libglade2-dev`
+* `libglade2-dev` For Manjaro, install libglade instead.
 * `libgtk2.0-dev`
 
 On most Ubuntu machines, these are available without needing additional sources being enabled on your apt-package respositories. To install these dependencies, run the following commands on the commandline:
