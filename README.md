@@ -28,7 +28,7 @@ C
 Building
 =======
 
-## Depenencies
+## Dependencies
 
 To build on **Ubuntu** or **Debian**, you need the following dependencies:
 
