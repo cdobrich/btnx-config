@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=btnx
 Type=Application
 Categories=System;
-Exec=<ROOT_EXEC> <BTNX_EXEC_PATH>
+Exec=sh -c "<ROOT_EXEC> env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS /usr/sbin/btnx-config"
 Icon=btnx.png
 GenericName[en_US]=

@@ -3540,7 +3540,7 @@ echo "${ECHO_T}no" >&6; }
 fi
 
 
-for ac_prog in gksu kdesu
+for ac_prog in pkexec
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -3582,9 +3582,9 @@ fi
 
   test -n "$rootexec" && break
 done
-test -n "$rootexec" || rootexec="gksu"
+test -n "$rootexec" || rootexec="pkexec"
 
-#rootexec=gksu
+#rootexec=pkexec
 #AC_MSG_WARN(rootexec=$rootexec)
 if test x$SK_CONFIG != xno; then
 	cat >>confdefs.h <<\_ACEOF

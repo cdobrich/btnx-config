@@ -85,11 +85,11 @@ Assuming you have successfully compiled and installed btnx and btnx-config, you 
 
 ## Starting btnx-config
 
-Older versions of Ubuntu can use the KDE application menu button to invoke the btnx-config graphical program. It requires the program `gksu`. However Debian and Ubuntu have both decided to move away from using the `gksu`, `gksudo`, `kdesu`, and `kdesudo` programs for security concerns. You can try to install `gksu` program IF it is available for your Linux system. But these programs are being gradually phased out, in favor of using the simple `sudo` command. Instead you should simply invoke the program from a commandline window using the more common `sudo` command:
+The latest version of BTNX-Config should use the `pkexec` command. The KDE menu should full support users clicking on it, which will prompt for a password for elevated privileges.
+
+If for some reason your system does not support 'pkexec', instead you should invoke the program from a commandline window using the more common `sudo` command:
 
 `sudo btnx-config`
-
-When the older versions of Ubuntu Linux 16.04 LTS is no longer supported by April 2021, the KDE menu button generation will be removed.
 
 ## Troubleshooting
 
@@ -97,6 +97,8 @@ If receive the following error message when trying to use the KDE application me
 
 `Could not find the program 'gksu'`
 
-This means the helper program 'gksu' is not installed on your system. Debian and Ubuntu have both decided to move away from using the `gksu`, `gksudo`, `kdesu`, and `kdesudo` programs for security concerns. You can try to install this program IF it is available for your Linux system. But these programs are being gradually phased out, in favor of using the simple `sudo` command. Instead you should simply invoke the program from a commandline window using the more common `sudo` command:
+This means you are running an older version of BTNX-Config and the helper program 'gksu' is not installed on your system. Please update to the newer version of BTNX-Config which supports modern Linux `pkexec` commands instead.
+
+Debian and Ubuntu have both decided to move away from using the `gksu`, `gksudo`, `kdesu`, and `kdesudo` programs for security concerns. You can try to install this program IF it is available for your Linux system. But these programs are being gradually phased out, in favor of using the simple `sudo` command. Instead you should simply invoke the program from a commandline window using the more common `sudo` command:
 
 `sudo btnx-config`

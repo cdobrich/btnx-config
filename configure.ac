@@ -41,8 +41,8 @@ docrootdir=$prefix/share/btnx-config/doc
 AH_TEMPLATE(HAVE_SCROLLKEEPER, [Check for scrollkeeper])
 AH_TEMPLATE(HAVE_HELP, [Check for a help viewer])
 AC_CHECK_PROG(SK_CONFIG, scrollkeeper-config, yes, no)
-AC_CHECK_PROGS(rootexec, gksu kdesu, gksu, $PATH:/sbin:/usr/sbin:/usr/local/sbin)
-#rootexec=gksu
+AC_CHECK_PROGS(rootexec, pkexec, $PATH:/sbin:/usr/sbin:/usr/local/sbin)
+#rootexec=pkexec
 #AC_MSG_WARN(rootexec=$rootexec)
 if test x$SK_CONFIG != xno; then
 	AC_DEFINE(HAVE_SCROLLKEEPER, 1)
