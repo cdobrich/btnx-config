@@ -3,7 +3,7 @@ btnx-config
 
 btnx-config & [btnx](https://github.com/cdobrich/btnx) are mouse button mapper tools for mouse hardware typically from 2000s to 2015 (for newer mice support, we recommend [Piper](https://github.com/libratbag/piper)). btnx-config is the configuration graphical user-interface (GUI) tool for btnx (Button Extension). It allows the user to send keyboard combinations or execute commands with mouse buttons. btnx-config provides mouse and button detection, and an easy way to configure the software's behavior.
 
-IMPORTANT: btnx-config *REQUIRES* the other package [btnx](https://github.com/cdobrich/btnx), which is the graphical configuration tool for btnx. See [btnx](https://github.com/cdobrich/btnx) for more details. There is no installation order. But to use, btnx should be started first, and then btnx-config should be run.
+IMPORTANT: btnx-config *REQUIRES* the other package [btnx](https://github.com/cdobrich/btnx), which is the graphical configuration tool for btnx. See [btnx](https://github.com/cdobrich/btnx) for more details. There is no installation order between btnx and btnx-config. But to use, btnx should be started first, and then btnx-config should be run.
 
 Modern Mice Support
 ----
